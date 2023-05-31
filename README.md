@@ -18,6 +18,10 @@ npm i name-dependecies --workspace name-project-dir(api or client)
 
 Run the production server:
 ```
+npm run buld
+```
+and
+```
 npm start
 ```
 
