@@ -10,6 +10,22 @@ First, install the dependencies
 npm install
 ```
 
+For add new depencies
+
+```
+npm i name-dependecies --workspace name-project-dir(api or client)
+```
+
+Run the production server:
+```
+npm run buld
+```
+and
+```
+npm start
+```
+
+
 Run the development server: 
 
 ```
