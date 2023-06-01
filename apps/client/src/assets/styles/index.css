@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Gilroy */
+  @font-face {
+    font-family: 'Tahoma';
+    font-weight: 400;
+    font-style: normal;
+    src: url('/assets/fonts/Tahoma/Tahoma Regular font.ttf') format('ttf'),
+  }
+}
