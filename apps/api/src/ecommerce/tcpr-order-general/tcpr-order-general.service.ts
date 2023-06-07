@@ -107,7 +107,7 @@ export class TcprOrderGeneralService {
     return `This action updates a #${id} tcprOrderGeneral`;
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return `This action removes a #${id} tcprOrderGeneral`;
   }
 }

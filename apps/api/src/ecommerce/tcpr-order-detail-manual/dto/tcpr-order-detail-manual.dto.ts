@@ -8,10 +8,6 @@ import {
 export class TcprOrderDetailManualDto {
   @IsOptional()
   @IsNumber()
-  id: number;
-
-  @IsOptional()
-  @IsNumber()
   orderGeneralManualId: number;
 
   @IsOptional()

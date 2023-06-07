@@ -1,8 +1,9 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
-import { TcprOrderDetailManualDto } from './dto/tcpr-order-detail-manual.dto';
-import { TcprOrderDetailManual } from 'src/feature/tcpr-order-detail-manual.entity';
+
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { TcprOrderDetailManualDto } from './dto/tcpr-order-detail-manual.dto';
+import { TcprOrderDetailManual } from 'src/feature/tcpr-order-detail-manual.entity';
 @Injectable()
 export class TcprOrderDetailManualService {
   constructor(
@@ -11,15 +12,16 @@ export class TcprOrderDetailManualService {
   ) {}
   async create(dto: TcprOrderDetailManualDto) {
     try {
-      const data = await this.repository.save({
-        ...dto,
-        orderGeneralManualId: { id: dto.orderGeneralManualId },
-      });
-      return {
-        statusCode: HttpStatus.OK,
-        message: 'Orden detalle manual creado con exito',
-        data,
-      };
+      // dto.dateCreation = new Date();
+      // const data = await this.repository.save({
+      //   ...dto,
+      //   orderGeneralManual: { id: dto.orderGeneralManualId },
+      // });
+      // return {
+      //   statusCode: HttpStatus.OK,
+      //   message: 'Cliente creado con exito',
+      //   data,
+      // };
     } catch (error) {
       return {
         statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
@@ -31,22 +33,22 @@ export class TcprOrderDetailManualService {
   async findAll() {
     try {
       const data = await this.repository.find();
-      if (data.length != 0) {
+      if (data) {
         return {
           statusCode: HttpStatus.OK,
-          message: 'Detalles de ordenes manuales obtenido con exito',
-          data,
+          message: 'Clientes obtenidos con exito',
+          data: data,
         };
       } else {
         return {
           statusCode: HttpStatus.BAD_REQUEST,
-          message: 'Detalles de ordenes manuales no existen',
+          message: 'Clientes no existen ',
         };
       }
     } catch (error) {
       return {
         statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
-        message: error?.message,
+        message: error?.response?.message,
       };
     }
   }
@@ -57,13 +59,13 @@ export class TcprOrderDetailManualService {
       if (data) {
         return {
           statusCode: HttpStatus.OK,
-          message: 'Detalle de orden manual obtenido con exito',
+          message: 'Cliente obtenido con exito',
           data,
         };
       } else {
         return {
           statusCode: HttpStatus.BAD_REQUEST,
-          message: 'Detalle de orden manual no existe',
+          message: 'Cliente no existe',
         };
       }
     } catch (error) {
@@ -74,11 +76,59 @@ export class TcprOrderDetailManualService {
     }
   }
 
-  update(id: number, updateTcprOrderdetalleDto: TcprOrderDetailManualDto) {
-    return `This action updates a #${id} tcprOrderdetalle`;
+  async update(id: number, dto: TcprOrderDetailManualDto) {
+    try {
+      const data = await this.repository
+        .createQueryBuilder()
+        .update(TcprOrderDetailManual)
+        .set({
+          ...dto,
+          orderGeneralManual: dto.orderGeneralManualId,
+        })
+        .where('id = :id', { id })
+        .execute();
+
+      if (data.affected !== 0) {
+        return {
+          statusCode: HttpStatus.OK,
+          message: 'Cliente actualizado con exito',
+          affected: data.affected,
+        };
+      } else {
+        return {
+          statusCode: HttpStatus.BAD_REQUEST,
+          message: 'Cliente no existe',
+        };
+      }
+    } catch (error) {
+      return {
+        statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+        message: error?.message,
+      };
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} tcprOrderdetalle`;
+  async remove(id: number) {
+    try {
+      const data = await this.repository.delete({ id });
+      if (data.affected !== 0) {
+        return {
+          statusCode: HttpStatus.OK,
+          message: 'Cliente eliminado con exito',
+          affected: data.affected,
+        };
+      } else {
+        return {
+          statusCode: HttpStatus.BAD_REQUEST,
+          message: 'Cliente no existe',
+          affected: data.affected,
+        };
+      }
+    } catch (error) {
+      return {
+        statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+        message: error?.message,
+      };
+    }
   }
 }

@@ -1,10 +1,6 @@
 import { IsOptional, IsString, IsNumber, IsNotEmpty } from 'class-validator';
 
 export class TcprClientDto {
-  @IsOptional()
-  @IsNumber()
-  customerId: number;
-
   @IsNotEmpty()
   @IsString()
   agregadorInternalId: string;

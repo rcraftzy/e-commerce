@@ -14,9 +14,9 @@ export class TcprOrderDetailManual {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })
   id: number;
 
-  @ManyToOne(() => TcprOrderGeneralManual, { eager: true })
-  @JoinColumn({ name: 'idOrdenGeneralManual', referencedColumnName: 'id' })
-  orderGeneralManualId: TcprOrderGeneralManual;
+  //@ManyToOne(() => TcprOrderGeneralManual, { eager: true })
+  @PrimaryColumn({ name: 'idOrdenGeneralManual' })
+  orderGeneralManual: number;
 
   @PrimaryColumn('bigint', { name: 'idPunto' })
   pointId: string;

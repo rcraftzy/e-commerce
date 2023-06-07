@@ -7,23 +7,19 @@ import {
 } from 'class-validator';
 
 export class TcpcItemDto {
-  @IsOptional()
-  @IsNumber()
-  itemId: number;
-
-  @IsOptional()
+  @IsNotEmpty()
   @IsString()
   skuItem: string;
 
-  @IsOptional()
+  @IsNotEmpty()
   @IsString()
   itemName: string;
 
-  @IsOptional()
+  @IsNotEmpty()
   @IsString()
   description: string;
 
-  @IsOptional()
+  @IsNotEmpty()
   @IsNumber()
   categoryId: number;
 
@@ -35,7 +31,7 @@ export class TcpcItemDto {
   @IsNumber()
   tax: number;
 
-  @IsOptional()
+  @IsNotEmpty()
   @IsString()
   image: string;
 
@@ -59,9 +55,9 @@ export class TcpcItemDto {
   @IsString()
   idFamily: string;
 
-  @IsOptional()
-  @IsDate()
-  dateCreation: Date;
+  // @IsOptional()
+  // @IsDate()
+  // dateCreation: Date;
 
   @IsOptional()
   @IsNumber()

@@ -35,10 +35,10 @@ export class TcpcItems {
   @Column('text', { name: 'imagen' })
   image: string;
 
-  @Column('int', { name: 'idUtensilio', default: () => "'1'" })
+  @Column('int', { name: 'idUtensilio' })
   idTool: number;
 
-  @Column('int', { name: 'cantidadUtensilio', default: () => "'1'" })
+  @Column('int', { name: 'cantidadUtensilio' })
   quantityUtensil: number;
 
   @Column('int', { name: 'puntosRedencion' })

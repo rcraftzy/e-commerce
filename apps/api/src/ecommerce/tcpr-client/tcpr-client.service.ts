@@ -33,13 +33,13 @@ export class TcprClientService {
       if (data) {
         return {
           statusCode: HttpStatus.OK,
-          message: 'datos obtenidos con exito',
+          message: 'Clientes obtenidos con exito',
           data: data,
         };
       } else {
         return {
           statusCode: HttpStatus.BAD_REQUEST,
-          message: 'No existen datos',
+          message: 'Clientes no existen ',
         };
       }
     } catch (error) {
@@ -50,15 +50,78 @@ export class TcprClientService {
     }
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} tcprClient`;
+  async findOne(customerId: number) {
+    try {
+      const data = await this.repository.findOneBy({ customerId });
+      if (data) {
+        return {
+          statusCode: HttpStatus.OK,
+          message: 'Cliente obtenido con exito',
+          data,
+        };
+      } else {
+        return {
+          statusCode: HttpStatus.BAD_REQUEST,
+          message: 'Cliente no existe',
+        };
+      }
+    } catch (error) {
+      return {
+        statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+        message: error?.message,
+      };
+    }
   }
 
-  update(id: number, dto: TcprClientDto) {
-    return `This action updates a #${id} tcprClient`;
+  async update(customerId: number, dto: TcprClientDto) {
+    try {
+      const data = await this.repository
+        .createQueryBuilder()
+        .update(TcprClient)
+        .set({ ...dto })
+        .where(`customerId = ${customerId}`)
+        .execute();
+      if (data.affected !== 0) {
+        return {
+          statusCode: HttpStatus.OK,
+          message: 'Cliente actualizado con exito',
+          affected: data.affected,
+        };
+      } else {
+        return {
+          statusCode: HttpStatus.BAD_REQUEST,
+          message: 'Cliente no existe',
+        };
+      }
+    } catch (error) {
+      return {
+        statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+        message: error?.message,
+      };
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} tcprClient`;
+  async remove(customerId: number) {
+    try {
+      const data = await this.repository.delete({ customerId });
+      if (data.affected !== 0) {
+        return {
+          statusCode: HttpStatus.OK,
+          message: 'Cliente eliminado con exito',
+          affected: data.affected,
+        };
+      } else {
+        return {
+          statusCode: HttpStatus.BAD_REQUEST,
+          message: 'Cliente no existe',
+          affected: data.affected,
+        };
+      }
+    } catch (error) {
+      return {
+        statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+        message: error?.message,
+      };
+    }
   }
 }
