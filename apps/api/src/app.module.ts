@@ -4,18 +4,17 @@ import { AppService } from './app.service';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TcpLoginUsersModule } from './tcp-login-users/tcp-login-users.module';
-import { TcpcLoginUsers } from './tcp-login-users/entities/tcp-login-user.entity';
-import { TcprOrderGeneralModule } from './tcpr-order-general/tcpr-order-general.module';
-import { TcprOrderDetailManualModule } from './tcpr-order-detail-manual/tcpr-order-detail-manual.module';
-import { TcprOrderGeneral } from './tcpr-order-general/entities/tcpr-order-general.entity';
-import { TcprOrderTypePaymentManualModule } from './tcpr-order-type-payment-manual/tcpr-order-type-payment-manual.module';
-import { TcprOrderTypePaymentManual } from './tcpr-order-type-payment-manual/entities/tcpr-order-type-payment-manual.entity';
-import { TcprOrderDetaileManual } from './tcpr-order-detail-manual/entities/tcpr-order-detail-manual.entity';
-import { TcprTrazasdiaModule } from './tcpr-trazasdia/tcpr-trazasdia.module';
-import { TcpcItemsModule } from './tcpc-items/tcpc-items.module';
-import { TcprOrderTypePaymentModule } from './tcpr-order-type-payment/tcpr-order-type-payment.module';
-import { TcprTrazasModule } from './tcpr-trazas/tcpr-trazas.module';
+import { TcpcLoginUsers } from './feature/tcpc-login-users.entity';
+import { TcprOrderGeneral } from './feature/tcpr-order-general.entity';
+import { TcpcItems } from './feature/tcpc-items.entity';
+import { TcprOrderDetailManual } from './feature/tcpr-order-detail-manual.entity';
+import { TcprOrderTypePayment } from './feature/tcpr-order-type-payment.entity';
+import { TcprTrazas } from './feature/tcpr-trazas.entity';
+import { TcprTrazasdia } from './feature/tcpr-trazasdia.entity';
+import { TcprOrderGeneralManual } from './feature/tcpr-order-general-manual.entity';
+import { TcprClient } from './feature/tcpr-client.entity';
+import { TcprOrderDetail } from './feature/tcpr-order-detail.entity';
+import { EcommerceModule } from './ecommerce/ecommerce.module';
 
 @Module({
   imports: [
@@ -27,10 +26,16 @@ import { TcprTrazasModule } from './tcpr-trazas/tcpr-trazas.module';
       password: 'integration',
       database: 'integration',
       entities: [
+        TcpcItems,
         TcpcLoginUsers,
+        TcprClient,
+        TcprOrderDetailManual,
+        TcprOrderDetail,
+        TcprOrderGeneralManual,
         TcprOrderGeneral,
-        TcprOrderDetaileManual,
-        TcprOrderTypePaymentManual,
+        TcprOrderTypePayment,
+        TcprTrazas,
+        TcprTrazasdia,
       ],
       synchronize: false,
       autoLoadEntities: true,
@@ -38,14 +43,7 @@ import { TcprTrazasModule } from './tcpr-trazas/tcpr-trazas.module';
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '../../', 'client/dist'),
     }),
-    TcpLoginUsersModule,
-    TcprOrderGeneralModule,
-    TcprOrderDetailManualModule,
-    TcprOrderTypePaymentManualModule,
-    TcprTrazasdiaModule,
-    TcpcItemsModule,
-    TcprOrderTypePaymentModule,
-    TcprTrazasModule,
+    EcommerceModule,
   ],
   controllers: [AppController],
   providers: [AppService],
