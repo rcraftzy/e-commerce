@@ -1,14 +1,49 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ServeStaticModule } from "@nestjs/serve-static";
+import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { TcpcLoginUsers } from './feature/tcpc-login-users.entity';
+import { TcprOrderGeneral } from './feature/tcpr-order-general.entity';
+import { TcpcItems } from './feature/tcpc-items.entity';
+import { TcprOrderDetailManual } from './feature/tcpr-order-detail-manual.entity';
+import { TcprOrderTypePayment } from './feature/tcpr-order-type-payment.entity';
+import { TcprTrazas } from './feature/tcpr-trazas.entity';
+import { TcprTrazasdia } from './feature/tcpr-trazasdia.entity';
+import { TcprOrderGeneralManual } from './feature/tcpr-order-general-manual.entity';
+import { TcprClient } from './feature/tcpr-client.entity';
+import { TcprOrderDetail } from './feature/tcpr-order-detail.entity';
+import { EcommerceModule } from './ecommerce/ecommerce.module';
 
 @Module({
   imports: [
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: 'db4free.net',
+      port: parseInt(process.env.DB_PORT),
+      username: 'integration',
+      password: 'integration',
+      database: 'integration',
+      entities: [
+        TcpcItems,
+        TcpcLoginUsers,
+        TcprClient,
+        TcprOrderDetailManual,
+        TcprOrderDetail,
+        TcprOrderGeneralManual,
+        TcprOrderGeneral,
+        TcprOrderTypePayment,
+        TcprTrazas,
+        TcprTrazasdia,
+      ],
+      synchronize: false,
+      autoLoadEntities: true,
+    }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '../../', 'client/dist') 
-    })
+      rootPath: join(__dirname, '../../', 'client/dist'),
+    }),
+    EcommerceModule,
   ],
   controllers: [AppController],
   providers: [AppService],
