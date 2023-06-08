@@ -1,17 +1,13 @@
 import {
   Column,
   Entity,
-  Index,
   JoinColumn,
   ManyToOne,
-  OneToMany,
-  OneToOne,
   PrimaryColumn,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { TcprClient } from './tcpr-client.entity';
 import { TcpcLoginUsers } from './tcpc-login-users.entity';
-import { TcprTrazasdia } from './tcpr-trazasdia.entity';
 
 @Entity('tcpr_ordengeneral', { schema: 'integration' })
 export class TcprOrderGeneral {
@@ -20,7 +16,7 @@ export class TcprOrderGeneral {
 
   @ManyToOne(() => TcprClient, { eager: true })
   @JoinColumn({ name: 'idCliente', foreignKeyConstraintName: 'customerId' })
-  customerId: TcprClient;
+  customer: TcprClient;
 
   @Column('bigint', { name: 'idMarca' })
   brandId: number;
@@ -147,11 +143,11 @@ export class TcprOrderGeneral {
     name: 'idUsuario',
     referencedColumnName: 'userId',
   })
-  userId: TcpcLoginUsers;
+  user: TcpcLoginUsers;
 
   @ManyToOne(() => TcpcLoginUsers, { eager: true })
   @JoinColumn({ name: 'idUsuarioCancel', referencedColumnName: 'userId' })
-  cancelUserId: TcpcLoginUsers;
+  cancelUser: TcpcLoginUsers;
 
   @Column('datetime', { name: 'fechaEstado' })
   dateState: Date;

@@ -1,5 +1,4 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
-
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { TcprOrderDetailManualDto } from './dto/tcpr-order-detail-manual.dto';
@@ -12,16 +11,17 @@ export class TcprOrderDetailManualService {
   ) {}
   async create(dto: TcprOrderDetailManualDto) {
     try {
-      // dto.dateCreation = new Date();
-      // const data = await this.repository.save({
-      //   ...dto,
-      //   orderGeneralManual: { id: dto.orderGeneralManualId },
-      // });
-      // return {
-      //   statusCode: HttpStatus.OK,
-      //   message: 'Cliente creado con exito',
-      //   data,
-      // };
+      const { orderGeneralManualId, ...information } = dto;
+      information.dateCreation = new Date();
+      const data = await this.repository.save({
+        ...information,
+        orderGeneralManual: { id: orderGeneralManualId },
+      });
+      return {
+        statusCode: HttpStatus.OK,
+        message: 'Orden de detalle manual creado con exito',
+        data,
+      };
     } catch (error) {
       return {
         statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
@@ -36,13 +36,13 @@ export class TcprOrderDetailManualService {
       if (data) {
         return {
           statusCode: HttpStatus.OK,
-          message: 'Clientes obtenidos con exito',
+          message: 'Orden de detalles manuales obtenidos con exito',
           data: data,
         };
       } else {
         return {
           statusCode: HttpStatus.BAD_REQUEST,
-          message: 'Clientes no existen ',
+          message: 'Orden de detalles manuales no existen ',
         };
       }
     } catch (error) {
@@ -59,13 +59,13 @@ export class TcprOrderDetailManualService {
       if (data) {
         return {
           statusCode: HttpStatus.OK,
-          message: 'Cliente obtenido con exito',
+          message: 'Orden de detalles manuales obtenido con exito',
           data,
         };
       } else {
         return {
           statusCode: HttpStatus.BAD_REQUEST,
-          message: 'Cliente no existe',
+          message: 'Orden de detalles manuales no existe',
         };
       }
     } catch (error) {
@@ -78,12 +78,13 @@ export class TcprOrderDetailManualService {
 
   async update(id: number, dto: TcprOrderDetailManualDto) {
     try {
+      const { orderGeneralManualId, ...information } = dto;
       const data = await this.repository
         .createQueryBuilder()
         .update(TcprOrderDetailManual)
         .set({
-          ...dto,
-          orderGeneralManual: dto.orderGeneralManualId,
+          ...information,
+          orderGeneralManual: { id: orderGeneralManualId },
         })
         .where('id = :id', { id })
         .execute();
@@ -91,13 +92,13 @@ export class TcprOrderDetailManualService {
       if (data.affected !== 0) {
         return {
           statusCode: HttpStatus.OK,
-          message: 'Cliente actualizado con exito',
+          message: 'Orden de detalle manual actualizado con exito',
           affected: data.affected,
         };
       } else {
         return {
           statusCode: HttpStatus.BAD_REQUEST,
-          message: 'Cliente no existe',
+          message: 'Orden de detalle manual no existe',
         };
       }
     } catch (error) {
@@ -114,13 +115,13 @@ export class TcprOrderDetailManualService {
       if (data.affected !== 0) {
         return {
           statusCode: HttpStatus.OK,
-          message: 'Cliente eliminado con exito',
+          message: 'Orden de detalle manual eliminado con exito',
           affected: data.affected,
         };
       } else {
         return {
           statusCode: HttpStatus.BAD_REQUEST,
-          message: 'Cliente no existe',
+          message: 'Orden de detalle manual no existe',
           affected: data.affected,
         };
       }

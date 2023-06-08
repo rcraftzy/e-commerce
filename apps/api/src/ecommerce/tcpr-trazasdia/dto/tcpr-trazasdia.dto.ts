@@ -3,10 +3,6 @@ import { IsNumber, IsOptional, IsString } from 'class-validator';
 export class TcprTrazasdiaDto {
   @IsOptional()
   @IsNumber()
-  id: number;
-
-  @IsOptional()
-  @IsNumber()
   customerId: number;
 
   @IsOptional()

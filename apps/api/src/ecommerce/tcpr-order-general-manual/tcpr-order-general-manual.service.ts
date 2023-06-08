@@ -10,22 +10,21 @@ export class TcprOrderGeneralManualService {
     private repository: Repository<TcprOrderGeneralManual>,
   ) {}
   async create(dto: TcprOrderGeneralManualDto) {
-    // try {
-    //   const data = await this.repository.save({
-    //     ...dto,
-    //     customerId: { customerId: dto.customerId },
-    //   });
-    //   return {
-    //     statusCode: HttpStatus.OK,
-    //     message: 'Orden detalle creado con exito',
-    //     data,
-    //   };
-    // } catch (error) {
-    //   return {
-    //     statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
-    //     message: error?.message,
-    //   };
-    // }
+    try {
+      const data = await this.repository.save({
+        ...dto,
+      });
+      return {
+        statusCode: HttpStatus.OK,
+        message: 'Orden general manual creado con exito',
+        data,
+      };
+    } catch (error) {
+      return {
+        statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+        message: error?.message,
+      };
+    }
   }
 
   async findAll() {
@@ -34,13 +33,13 @@ export class TcprOrderGeneralManualService {
       if (data.length != 0) {
         return {
           statusCode: HttpStatus.OK,
-          message: 'Detalles de ordenes obtenido con exito',
+          message: 'Ordenes general manual obtenido con exito',
           data,
         };
       } else {
         return {
           statusCode: HttpStatus.BAD_REQUEST,
-          message: 'Detalles de ordenes no existen',
+          message: 'Ordenes general manual no existen',
         };
       }
     } catch (error) {
@@ -53,17 +52,17 @@ export class TcprOrderGeneralManualService {
 
   async findOne(id: number) {
     try {
-      const data = await this.repository.findOneBy({ id });
+      const data = await this.repository.findOne({ where: { id } });
       if (data) {
         return {
           statusCode: HttpStatus.OK,
-          message: 'Detalle de orden obtenido con exito',
+          message: 'Orden general manual obtenido con exito',
           data,
         };
       } else {
         return {
           statusCode: HttpStatus.BAD_REQUEST,
-          message: 'Detalle de orden no existe',
+          message: 'Orden general manual no existe',
         };
       }
     } catch (error) {
@@ -76,24 +75,24 @@ export class TcprOrderGeneralManualService {
 
   async update(id: number, dto: TcprOrderGeneralManualDto) {
     try {
-      // const data = await this.repository
-      //   .createQueryBuilder()
-      //   .update(TcprOrderDetail)
-      //   .set({ ...dto, customerId: { customerId: dto.customerId } })
-      //   .where(`id = ${id}`)
-      //   .execute();
-      // if (data.affected !== 0) {
-      //   return {
-      //     statusCode: HttpStatus.OK,
-      //     message: 'Detalle de orden actualizado con exito',
-      //     affected: data.affected,
-      //   };
-      // } else {
-      //   return {
-      //     statusCode: HttpStatus.BAD_REQUEST,
-      //     message: 'Detalle de orden no existe',
-      //   };
-      // }
+      const data = await this.repository
+        .createQueryBuilder()
+        .update(TcprOrderGeneralManual)
+        .set(dto)
+        .where(`id = ${id}`)
+        .execute();
+      if (data.affected !== 0) {
+        return {
+          statusCode: HttpStatus.OK,
+          message: 'Orden general manual actualizado con exito',
+          affected: data.affected,
+        };
+      } else {
+        return {
+          statusCode: HttpStatus.BAD_REQUEST,
+          message: 'Orden general manual no existe',
+        };
+      }
     } catch (error) {
       return {
         statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
@@ -108,13 +107,13 @@ export class TcprOrderGeneralManualService {
       if (data.affected !== 0) {
         return {
           statusCode: HttpStatus.OK,
-          message: 'Detalle de orden eliminado con exito',
+          message: 'Orden general manual eliminado con exito',
           affected: data.affected,
         };
       } else {
         return {
           statusCode: HttpStatus.BAD_REQUEST,
-          message: 'Detalle de orden no existe',
+          message: 'Orden general manual no existe',
           affected: data.affected,
         };
       }

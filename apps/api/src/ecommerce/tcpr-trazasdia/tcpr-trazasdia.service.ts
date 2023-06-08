@@ -10,22 +10,33 @@ export class TcprTrazasdiaService {
     private repository: Repository<TcprTrazasdia>,
   ) {}
   async create(dto: TcprTrazasdiaDto) {
-    // try {
-    //   const data = await this.repository.save({
-    //     ...dto,
-    //     customerId: { customerId: dto.customerId },
-    //   });
-    //   return {
-    //     statusCode: HttpStatus.OK,
-    //     message: 'Orden detalle creado con exito',
-    //     data,
-    //   };
-    // } catch (error) {
-    //   return {
-    //     statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
-    //     message: error?.message,
-    //   };
-    // }
+    try {
+      const {
+        userCancelId,
+        userTransferId,
+        userId,
+        customerId,
+        ...information
+      } = dto;
+
+      const data = await this.repository.save({
+        ...information,
+        user: { userId: userId },
+        userCancel: { userId: userCancelId },
+        userTransfer: { userId: userTransferId },
+        customer: { customerId: customerId },
+      });
+      return {
+        statusCode: HttpStatus.OK,
+        message: 'Trazadia creado con exito',
+        data,
+      };
+    } catch (error) {
+      return {
+        statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+        message: error?.message,
+      };
+    }
   }
 
   async findAll() {
@@ -34,13 +45,13 @@ export class TcprTrazasdiaService {
       if (data.length != 0) {
         return {
           statusCode: HttpStatus.OK,
-          message: 'Detalles de ordenes obtenido con exito',
+          message: 'Trazadias obtenido con exito',
           data,
         };
       } else {
         return {
           statusCode: HttpStatus.BAD_REQUEST,
-          message: 'Detalles de ordenes no existen',
+          message: 'Trazadias no existen',
         };
       }
     } catch (error) {
@@ -53,17 +64,17 @@ export class TcprTrazasdiaService {
 
   async findOne(id: number) {
     try {
-      const data = await this.repository.find({ where: { id } });
-      if (data.length !== 0) {
+      const data = await this.repository.findOne({ where: { id } });
+      if (data) {
         return {
           statusCode: HttpStatus.OK,
-          message: 'Detalle de orden obtenido con exito',
+          message: 'Trazadia obtenido con exito',
           data,
         };
       } else {
         return {
           statusCode: HttpStatus.BAD_REQUEST,
-          message: 'Detalle de orden no existe',
+          message: 'Trazadia no existe',
         };
       }
     } catch (error) {
@@ -76,24 +87,37 @@ export class TcprTrazasdiaService {
 
   async update(id: number, dto: TcprTrazasdiaDto) {
     try {
-      // const data = await this.repository
-      //   .createQueryBuilder()
-      //   .update(TcprOrderDetail)
-      //   .set({ ...dto, customerId: { customerId: dto.customerId } })
-      //   .where(`id = ${id}`)
-      //   .execute();
-      // if (data.affected !== 0) {
-      //   return {
-      //     statusCode: HttpStatus.OK,
-      //     message: 'Detalle de orden actualizado con exito',
-      //     affected: data.affected,
-      //   };
-      // } else {
-      //   return {
-      //     statusCode: HttpStatus.BAD_REQUEST,
-      //     message: 'Detalle de orden no existe',
-      //   };
-      // }
+      const {
+        userCancelId,
+        userTransferId,
+        userId,
+        customerId,
+        ...information
+      } = dto;
+      const data = await this.repository
+        .createQueryBuilder()
+        .update(TcprTrazasdia)
+        .set({
+          ...information,
+          user: { userId: userId },
+          userCancel: { userId: userCancelId },
+          userTransfer: { userId: userTransferId },
+          customer: { customerId: customerId },
+        })
+        .where(`id = ${id}`)
+        .execute();
+      if (data.affected !== 0) {
+        return {
+          statusCode: HttpStatus.OK,
+          message: 'Trazadia actualizado con exito',
+          affected: data.affected,
+        };
+      } else {
+        return {
+          statusCode: HttpStatus.BAD_REQUEST,
+          message: 'Trazadia no existe',
+        };
+      }
     } catch (error) {
       return {
         statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
@@ -108,13 +132,13 @@ export class TcprTrazasdiaService {
       if (data.affected !== 0) {
         return {
           statusCode: HttpStatus.OK,
-          message: 'Detalle de orden eliminado con exito',
+          message: 'Trazadia eliminado con exito',
           affected: data.affected,
         };
       } else {
         return {
           statusCode: HttpStatus.BAD_REQUEST,
-          message: 'Detalle de orden no existe',
+          message: 'Trazadia no existe',
           affected: data.affected,
         };
       }

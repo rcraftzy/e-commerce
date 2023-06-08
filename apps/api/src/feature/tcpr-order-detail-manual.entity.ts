@@ -14,12 +14,12 @@ export class TcprOrderDetailManual {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })
   id: number;
 
-  //@ManyToOne(() => TcprOrderGeneralManual, { eager: true })
-  @PrimaryColumn({ name: 'idOrdenGeneralManual' })
-  orderGeneralManual: number;
+  @ManyToOne(() => TcprOrderGeneralManual, { eager: true })
+  @JoinColumn({ name: 'idOrdenGeneralManual', referencedColumnName: 'id' })
+  orderGeneralManual: TcprOrderGeneralManual;
 
   @PrimaryColumn('bigint', { name: 'idPunto' })
-  pointId: string;
+  pointId: number;
 
   @Column('text', { name: 'idOrdenNumero' })
   orderNumberId: string;

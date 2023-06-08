@@ -1,25 +1,21 @@
-import { IsNumber, IsOptional } from 'class-validator';
+import { IsNumber, IsOptional, IsString } from 'class-validator';
 
 export class TcprOrderTypePaymentDto {
-  @IsOptional()
-  @IsNumber()
-  id: number;
-
   @IsOptional()
   @IsNumber()
   pointid: number;
 
   @IsOptional()
   @IsNumber()
-  idOrderGeneral: number;
+  orderGeneralId: number;
 
   @IsOptional()
-  @IsNumber()
+  @IsString()
   orderNumberId: string;
 
   @IsOptional()
   @IsNumber()
-  idTypePay: number;
+  typePayId: number;
 
   @IsOptional()
   nomTypePay: string;

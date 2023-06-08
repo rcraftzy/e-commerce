@@ -36,12 +36,12 @@ export class TcprOrderGeneralController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() dto: TcprOrderGeneralDto) {
-    return this.service.update(+id, dto);
+  update(@Param('id') id: number, @Body() dto: TcprOrderGeneralDto) {
+    return this.service.update(id, dto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.service.remove(+id);
+  remove(@Param('id') id: number) {
+    return this.service.remove(id);
   }
 }

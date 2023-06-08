@@ -1,16 +1,11 @@
 import {
   IsNotEmpty,
-  IsEmpty,
   IsString,
   IsNumber,
   IsOptional,
   IsDate,
 } from 'class-validator';
 export class TcprOrderGeneralDto {
-  @IsOptional()
-  @IsNumber()
-  id: number;
-
   @IsNotEmpty()
   @IsNumber()
   customerId: number;

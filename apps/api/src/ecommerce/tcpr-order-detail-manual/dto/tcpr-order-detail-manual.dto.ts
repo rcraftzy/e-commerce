@@ -1,18 +1,12 @@
-import {
-  IsString,
-  IsNotEmpty,
-  IsNumber,
-  IsOptional,
-  MaxLength,
-} from 'class-validator';
+import { IsString, IsNumber, IsOptional, MaxLength } from 'class-validator';
 export class TcprOrderDetailManualDto {
   @IsOptional()
   @IsNumber()
   orderGeneralManualId: number;
 
   @IsOptional()
-  @IsString()
-  pointId: string;
+  @IsNumber()
+  pointId: number;
 
   @IsOptional()
   @IsString()

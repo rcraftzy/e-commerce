@@ -1,10 +1,6 @@
 import { IsNumber, IsOptional, IsString } from 'class-validator';
 
-export class TcprTrazaDto {
-  @IsOptional()
-  @IsNumber()
-  id: number;
-
+export class TcprTrazasDto {
   @IsOptional()
   @IsNumber()
   customerId: number;

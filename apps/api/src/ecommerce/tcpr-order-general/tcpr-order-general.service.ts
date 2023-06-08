@@ -3,7 +3,6 @@ import { TcprOrderGeneralDto } from './dto/tcpr-order-general.dto';
 import { Repository } from 'typeorm';
 import { TcprOrderGeneral } from 'src/feature/tcpr-order-general.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { TcpcLoginUsers } from 'src/feature/tcpc-login-users.entity';
 
 @Injectable()
 export class TcprOrderGeneralService {
@@ -13,11 +12,12 @@ export class TcprOrderGeneralService {
   ) {}
   async create(dto: TcprOrderGeneralDto) {
     try {
+      const { customerId, userId, cancelUserId, ...information } = dto;
       const data = await this.repository.save({
-        ...dto,
-        customerId: { customerId: dto.customerId },
-        userId: { userId: dto.userId },
-        cancelUserId: { userId: dto.cancelUserId },
+        ...information,
+        customer: { customerId: customerId },
+        user: { userId: userId },
+        cancelUser: { userId: cancelUserId },
       });
       return {
         statusCode: HttpStatus.OK,
@@ -103,11 +103,62 @@ export class TcprOrderGeneralService {
     }
   }
 
-  update(id: number, dto: TcprOrderGeneralDto) {
-    return `This action updates a #${id} tcprOrderGeneral`;
+  async update(id: number, dto: TcprOrderGeneralDto) {
+    try {
+      const { customerId, userId, cancelUserId, ...information } = dto;
+
+      const data = await this.repository
+        .createQueryBuilder()
+        .update(TcprOrderGeneral)
+        .set({
+          ...information,
+          customer: { customerId: customerId },
+          user: { userId: userId },
+          cancelUser: { userId: cancelUserId },
+        })
+        .where(`id = ${id}`)
+        .execute();
+      if (data.affected !== 0) {
+        return {
+          statusCode: HttpStatus.OK,
+          message: 'Orden general manual actualizado con exito',
+          affected: data.affected,
+        };
+      } else {
+        return {
+          statusCode: HttpStatus.BAD_REQUEST,
+          message: 'Orden general manual no existe',
+        };
+      }
+    } catch (error) {
+      return {
+        statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+        message: error?.message,
+      };
+    }
   }
 
   async remove(id: number) {
-    return `This action removes a #${id} tcprOrderGeneral`;
+    try {
+      const data = await this.repository.delete({ id });
+      if (data.affected !== 0) {
+        return {
+          statusCode: HttpStatus.OK,
+          message: 'Orden general manual eliminado con exito',
+          affected: data.affected,
+        };
+      } else {
+        return {
+          statusCode: HttpStatus.BAD_REQUEST,
+          message: 'Orden general manual no existe',
+          affected: data.affected,
+        };
+      }
+    } catch (error) {
+      return {
+        statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+        message: error?.message,
+      };
+    }
   }
 }

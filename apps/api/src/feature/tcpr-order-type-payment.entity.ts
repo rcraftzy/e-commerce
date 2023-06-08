@@ -18,13 +18,13 @@ export class TcprOrderTypePayment {
   pointid: number;
 
   @Column('bigint', { name: 'idOrdenGeneral' })
-  idOrderGeneral: number;
+  orderGeneralId: number;
 
   @Column('text', { name: 'idOrdenNumero' })
   orderNumberId: string;
 
   @PrimaryColumn('int', { name: 'idTipoPago' })
-  idTypePay: number;
+  typePayId: number;
 
   @Column('text', { name: 'NomTipoPago' })
   nomTypePay: string;

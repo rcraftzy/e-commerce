@@ -16,8 +16,9 @@ export class TcprTrazas {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })
   id: number;
 
-  @PrimaryColumn({ name: 'idCliente' })
-  customerId: number;
+  @ManyToOne(() => TcprClient, { eager: true })
+  @JoinColumn({ name: 'idCliente', referencedColumnName: 'customerId' })
+  customer: TcprClient;
 
   @PrimaryColumn('bigint', { name: 'idPunto' })
   pointId: number;

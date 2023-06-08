@@ -2,10 +2,6 @@ import { IsNotEmpty, IsOptional, IsNumber, IsString } from 'class-validator';
 export class TcprOrderGeneralManualDto {
   @IsOptional()
   @IsNumber()
-  id: number;
-
-  @IsOptional()
-  @IsNumber()
   brandId: number;
 
   @IsOptional()
@@ -21,7 +17,6 @@ export class TcprOrderGeneralManualDto {
   pointId: number;
 
   @IsOptional()
-  @IsNumber()
   @IsString()
   orderNumberId: string;
 
@@ -39,7 +34,7 @@ export class TcprOrderGeneralManualDto {
 
   @IsOptional()
   @IsString()
-  TypeOrder: string;
+  typeOrder: string;
 
   @IsOptional()
   @IsString()

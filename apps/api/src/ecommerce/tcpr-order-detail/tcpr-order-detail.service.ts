@@ -12,9 +12,10 @@ export class TcprOrderDetailService {
   ) {}
   async create(dto: TcprOrderDetailDto) {
     try {
+      const { customerId, ...information } = dto;
       const data = await this.repository.save({
-        ...dto,
-        customerId: { customerId: dto.customerId },
+        ...information,
+        customer: { customerId: customerId },
       });
       return {
         statusCode: HttpStatus.OK,
@@ -101,10 +102,11 @@ export class TcprOrderDetailService {
 
   async update(id: number, dto: TcprOrderDetailDto) {
     try {
+      const { customerId, ...information } = dto;
       const data = await this.repository
         .createQueryBuilder()
         .update(TcprOrderDetail)
-        .set({ ...dto, customerId: { customerId: dto.customerId } })
+        .set({ ...information, customer: { customerId: customerId } })
         .where(`id = ${id}`)
         .execute();
       if (data.affected !== 0) {

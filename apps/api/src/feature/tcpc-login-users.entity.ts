@@ -103,10 +103,4 @@ export class TcpcLoginUsers {
 
   @Column('datetime', { name: 'fechaCrea' })
   dateCreation: Date;
-
-  @OneToMany(
-    () => TcprOrderGeneral,
-    (tcprOrderGeneral) => tcprOrderGeneral.userId,
-  )
-  tcprOrderGeneral: TcprOrderGeneral[];
 }

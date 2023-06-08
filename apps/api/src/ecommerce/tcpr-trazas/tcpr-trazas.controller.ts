@@ -8,14 +8,14 @@ import {
   Delete,
 } from '@nestjs/common';
 import { TcprTrazasService } from './tcpr-trazas.service';
-import { TcprTrazaDto } from './dto/tcpr-traza.dto';
+import { TcprTrazasDto } from './dto/tcpr-trazas.dto';
 
 @Controller('tcpr-trazas')
 export class TcprTrazasController {
   constructor(private readonly repository: TcprTrazasService) {}
 
   @Post()
-  async create(@Body() dto: TcprTrazaDto) {
+  async create(@Body() dto: TcprTrazasDto) {
     return await this.repository.create(dto);
   }
 
@@ -30,8 +30,8 @@ export class TcprTrazasController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() dto: TcprTrazaDto) {
-    return this.repository.update(+id, dto);
+  update(@Param('id') id: number, @Body() dto: TcprTrazasDto) {
+    return this.repository.update(id, dto);
   }
 
   @Delete(':id')

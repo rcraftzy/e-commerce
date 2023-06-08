@@ -18,8 +18,9 @@ export class TcprTrazasdia {
   @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })
   id: number;
 
-  @PrimaryColumn({ name: 'idCliente' })
-  customerId: number;
+  @ManyToOne(() => TcprClient, { eager: true })
+  @JoinColumn({ name: 'idCliente', referencedColumnName: 'customerId' })
+  customer: TcprClient;
 
   @PrimaryColumn('bigint', { name: 'idPunto' })
   pointId: number;
@@ -44,15 +45,15 @@ export class TcprTrazasdia {
 
   @ManyToOne(() => TcpcLoginUsers, { eager: true })
   @JoinColumn({ name: 'idUsuario', referencedColumnName: 'userId' })
-  user: number;
+  user: TcpcLoginUsers;
 
   @ManyToOne(() => TcpcLoginUsers, { eager: true })
   @JoinColumn({ name: 'idUsuarioTraslado', referencedColumnName: 'userId' })
-  userTransfer: number;
+  userTransfer: TcpcLoginUsers;
 
   @ManyToOne(() => TcpcLoginUsers, { eager: true })
   @JoinColumn({ name: 'idUsuarioCancela', referencedColumnName: 'userId' })
-  userCancel: number;
+  userCancel: TcpcLoginUsers;
 
   @Column('datetime', { name: 'fechaInicio' })
   dateStart: Date;

@@ -1,5 +1,4 @@
 import { Injectable, HttpStatus } from '@nestjs/common';
-import { TcpcLoginUserDto } from './dto/tcpc-login-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { TcpcLoginUsers } from 'src/feature/tcpc-login-users.entity';
@@ -54,13 +53,5 @@ export class TcpcLoginUsersService {
         message: error?.response?.message,
       };
     }
-  }
-
-  update(id: number, dto: TcpcLoginUserDto) {
-    return `This action updates a #${id} tcprOrderDetailManual`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} tcprOrderDetailManual`;
   }
 }

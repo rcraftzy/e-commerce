@@ -1,16 +1,12 @@
 import {
   Column,
   Entity,
-  Index,
   JoinColumn,
   ManyToOne,
-  OneToMany,
   PrimaryGeneratedColumn,
   PrimaryColumn,
 } from 'typeorm';
 import { TcprClient } from './tcpr-client.entity';
-import { TcprTrazas } from './tcpr-trazas.entity';
-import { TcprTrazasdia } from './tcpr-trazasdia.entity';
 
 @Entity('tcpr_ordendetalle', { schema: 'integration' })
 export class TcprOrderDetail {
@@ -19,7 +15,7 @@ export class TcprOrderDetail {
 
   @ManyToOne(() => TcprClient, { eager: true })
   @JoinColumn({ name: 'idCliente', referencedColumnName: 'customerId' })
-  customerId: TcprClient;
+  customer: TcprClient;
 
   @Column('bigint', { name: 'idPunto' })
   pointId: number;

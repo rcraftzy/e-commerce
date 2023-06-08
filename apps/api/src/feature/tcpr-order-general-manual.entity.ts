@@ -39,7 +39,7 @@ export class TcprOrderGeneralManual {
   company: string;
 
   @Column('text', { name: 'identificacion' })
-  TypeOrder: string;
+  typeOrder: string;
 
   @Column('varchar', { name: 'telefonoFijo' })
   landline: string;

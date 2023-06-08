@@ -1,15 +1,4 @@
-import {
-  Column,
-  Entity,
-  Index,
-  OneToMany,
-  PrimaryGeneratedColumn,
-  PrimaryColumn,
-} from 'typeorm';
-import { TcprOrderGeneral } from './tcpr-order-general.entity';
-import { TcprOrderDetail } from './tcpr-order-detail.entity';
-import { TcprTrazas } from './tcpr-trazas.entity';
-import { TcprTrazasdia } from './tcpr-trazasdia.entity';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('tcpr_cliente', { schema: 'integration' })
 export class TcprClient {
