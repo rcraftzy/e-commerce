@@ -3,17 +3,29 @@ import { TcpcItemDto } from './dto/tcpc-item.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { TcpcItems } from 'src/feature/tcpc-items.entity';
+import * as fs from 'fs';
+
+const RUTA_IMAGE = 'items/';
+
 @Injectable()
 export class TcpcItemsService {
   constructor(
     @InjectRepository(TcpcItems)
     private repository: Repository<TcpcItems>,
   ) {}
-  async create(dto: TcpcItemDto) {
+  async create(dto: TcpcItemDto, file: Express.Multer.File) {
     try {
+      if (file?.fieldname === undefined) {
+        return {
+          statusCode: HttpStatus.BAD_REQUEST,
+          message: 'image field cannot be empty',
+        };
+      }
+      const imagePath = RUTA_IMAGE + file.filename;
       const data = await this.repository.save({
         ...dto,
         dateCreation: new Date(),
+        image: imagePath,
       });
       return {
         statusCode: HttpStatus.OK,
@@ -74,14 +86,30 @@ export class TcpcItemsService {
     }
   }
 
-  async update(itemId: number, dto: TcpcItemDto) {
+  async update(itemId: number, dto: TcpcItemDto, file: Express.Multer.File) {
     try {
-      const data = await this.repository
-        .createQueryBuilder()
-        .update(TcpcItems)
-        .set({ ...dto })
-        .where(`itemId = ${itemId}`)
-        .execute();
+      let data: any;
+      if (file?.fieldname !== undefined) {
+        const itemExit = await this.repository.findOneBy({ itemId });
+        const imagePath = RUTA_IMAGE + file?.filename;
+        try {
+          fs.unlinkSync(itemExit?.image);
+        } catch (error) {}
+        data = await this.repository
+          .createQueryBuilder()
+          .update(TcpcItems)
+          .set({ ...dto, image: imagePath })
+          .where(`itemId = ${itemId}`)
+          .execute();
+      } else {
+        data = await this.repository
+          .createQueryBuilder()
+          .update(TcpcItems)
+          .set({ ...dto })
+          .where(`itemId = ${itemId}`)
+          .execute();
+      }
+
       if (data.affected !== 0) {
         return {
           statusCode: HttpStatus.OK,
@@ -104,6 +132,12 @@ export class TcpcItemsService {
 
   async remove(itemId: number) {
     try {
+      const item = await this.repository.findOneBy({ itemId });
+      if (item) {
+        try {
+          fs.unlinkSync(item.image);
+        } catch (error) {}
+      }
       const data = await this.repository.delete({ itemId });
       if (data.affected !== 0) {
         return {

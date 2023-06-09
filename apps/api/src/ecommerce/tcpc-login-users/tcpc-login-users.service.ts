@@ -4,12 +4,15 @@ import { Repository } from 'typeorm';
 import { TcpcLoginUsers } from 'src/feature/tcpc-login-users.entity';
 import * as crypto from 'crypto';
 import { LoginUserDto } from './dto/login-user.dto';
+import { JwtService } from '@nestjs/jwt';
+import { Request, Response } from 'express';
 
 @Injectable()
 export class TcpcLoginUsersService {
   constructor(
     @InjectRepository(TcpcLoginUsers)
     private usersRepository: Repository<TcpcLoginUsers>,
+    private jwtService: JwtService,
   ) {}
 
   findAll() {
@@ -20,30 +23,34 @@ export class TcpcLoginUsersService {
     }
   }
 
-  async login({ email, password }: LoginUserDto) {
+  async login({ email, password }: LoginUserDto, res: Response) {
     try {
       const hashedPassword = crypto
         .createHash('sha1')
         .update(password)
         .digest('hex');
 
-      const exitUser = await this.usersRepository.findOne({
+      const user = await this.usersRepository.findOne({
         where: {
           clue: hashedPassword,
           user: email,
         },
       });
-
-      if (exitUser) {
-        exitUser.clue = '';
+      if (user) {
+        const payload = { sub: user.userId };
+        const token = await this.jwtService.signAsync(payload);
+        res.cookie('token', token, {
+          httpOnly: true,
+        });
         return {
           statusCode: HttpStatus.OK,
           message: 'Logeado con exito',
-          data: exitUser,
+          data: user,
+          token,
         };
       } else {
         return {
-          statusCode: HttpStatus.BAD_REQUEST,
+          statusCode: HttpStatus.UNAUTHORIZED,
           message: 'email o contraseña es incorrecto',
         };
       }
@@ -53,5 +60,32 @@ export class TcpcLoginUsersService {
         message: error?.response?.message,
       };
     }
+  }
+
+  async me(res: Response, req: Request) {
+    const token = req.cookies['token'];
+    const decodedJwtAccessToken = this.jwtService.decode(token);
+    if (decodedJwtAccessToken === null) {
+      res.clearCookie('token');
+      return {
+        statusCode: HttpStatus.UNAUTHORIZED,
+        message: 'Usuario no existe',
+      };
+    }
+    const data = await this.usersRepository.findOneBy(
+      decodedJwtAccessToken.sub,
+    );
+
+    return {
+      statusCode: HttpStatus.OK,
+      message: 'Usuario logeado con exito',
+      user: data,
+      token,
+    };
+  }
+
+  async signout(req: Request, res: Response) {
+    res.clearCookie('token');
+    return res.send({ message: 'Cerrado sesión' });
   }
 }

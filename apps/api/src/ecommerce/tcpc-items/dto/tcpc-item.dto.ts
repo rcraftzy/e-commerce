@@ -31,10 +31,6 @@ export class TcpcItemDto {
   @IsNumber()
   tax: number;
 
-  @IsNotEmpty()
-  @IsString()
-  image: string;
-
   @IsOptional()
   @IsNumber()
   idTool: number;

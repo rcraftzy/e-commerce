@@ -6,17 +6,26 @@ import {
   Put,
   Param,
   Delete,
+  UseInterceptors,
+  UploadedFile,
 } from '@nestjs/common';
 import { TcpcItemsService } from './tcpc-items.service';
 import { TcpcItemDto } from './dto/tcpc-item.dto';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
+import { extname, join, resolve } from 'path';
 
 @Controller('tcpc-items')
 export class TcpcItemsController {
   constructor(private readonly repository: TcpcItemsService) {}
 
   @Post()
-  async create(@Body() dto: TcpcItemDto) {
-    return await this.repository.create(dto);
+  @UseInterceptors(FileInterceptor('image'))
+  async create(
+    @Body() dto: TcpcItemDto,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
+    return await this.repository.create(dto, file);
   }
 
   @Get()
@@ -30,8 +39,13 @@ export class TcpcItemsController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() dto: TcpcItemDto) {
-    return this.repository.update(+id, dto);
+  @UseInterceptors(FileInterceptor('image'))
+  update(
+    @Param('id') id: string,
+    @Body() dto: TcpcItemDto,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
+    return this.repository.update(+id, dto, file);
   }
 
   @Delete(':id')

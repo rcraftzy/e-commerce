@@ -1,16 +1,4 @@
-import {
-  Column,
-  Entity,
-  Index,
-  JoinColumn,
-  ManyToOne,
-  OneToMany,
-  PrimaryGeneratedColumn,
-  PrimaryColumn,
-} from 'typeorm';
-import { TcprOrderGeneral } from './tcpr-order-general.entity';
-import { TcprTrazas } from './tcpr-trazas.entity';
-import { TcprTrazasdia } from './tcpr-trazasdia.entity';
+import { Column, Entity, PrimaryGeneratedColumn, PrimaryColumn } from 'typeorm';
 
 @Entity('tcpc_loginusuarios', { schema: 'integration' })
 export class TcpcLoginUsers {
@@ -23,7 +11,7 @@ export class TcpcLoginUsers {
   @Column('text', { name: 'usuario' })
   user: string;
 
-  @Column('text', { name: 'clave', comment: 'Campo encripto.' })
+  @Column('text', { name: 'clave', comment: 'Campo encripto.', select: false })
   clue: string;
 
   @Column('text', { name: 'celular' })

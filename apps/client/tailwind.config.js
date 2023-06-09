@@ -13,26 +13,30 @@ export default {
     // #efc100
     // #e1ead6 #F1EAD6
     // #7ea626
+    // #f8f4ea
+    // #7fa526
     // #de9700 #6F4D2B
     // #E8B400 #513420
     extend: {
       colors: {
         'burnt-copper': '#982f1a',
-        'fire-red': '#cb251e',
-        'intense-orange': '#db7115',
+        'fire-red': '#cb261e',
+        'intense-orange': '#db7216',
         'golden-yellow': '#de9700',
         'bright-yellow': '#DE9800',
-        'light-gold': '#e8b400',
+        'light-gold': '#e8b300',
         'vibrant-yellow': '#efc100',
         'soft-white': '#e1ead6',
-        'light-ivory': '#F1EAD6',
-        'moss-green': '#7ea626',
+        'light-ivory': '#f8f4ea',
+        'moss-green': '#7fa526',
         'dark-brown': '#6F4D2B',
         'light-gold-2': '#E8B400',
         'chocolate-brown': '#513420'
       },
       fontFamily: {
         tahoma: ["Tahoma", "sans-serif"],
+        'ifc-insane-rodeo': ["IFC INSANE RODEO", 'sans-serif'],
+        'ifc-insane-rodeo-bold': ["IFC INSANE RODEO BOLD", "sans-serif"]
       },
     }
   },

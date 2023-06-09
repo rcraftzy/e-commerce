@@ -1,14 +1,23 @@
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Error404 } from './containers/errors/Error404.jsx';
+import { FullClientLayout } from './hocs/layouts/FullClientLayout.jsx';
+import { Admin, Contactenos, Eventos, Home, Nosotros, Restrurantes } from "./containers/pages/index.js";
+
 function App() {
   return (
-    <>
-      <button onClick={async () => {
-        const response = await fetch('/api')
-        const data = await response.text()
-        console.log(data)
-      }}>
-        Click Me
-      </button>
-    </>
+    <Router>
+      <Routes>
+        <Route element={<FullClientLayout />}>
+          <Route path="*" element={<Error404 />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/contactenos" element={<Contactenos />} />
+          <Route path="/nosotros" element={<Nosotros />} />
+          <Route path="/eventos" element={<Eventos />} />
+          <Route path="/restaurantes" element={<Restrurantes />} />
+        </Route>
+        <Route path="/admin/" element={<Admin />} />
+      </Routes>
+    </Router>
   )
 }
 
