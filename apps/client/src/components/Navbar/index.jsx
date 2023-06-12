@@ -30,7 +30,7 @@ export const Navbar = () => {
   const linkClass = `${baseLinkClass} border-intense-orange text-intense-orange`
 
   return (
-    <header className="fixed w-full z-20 bg-light-ivory">
+    <header className="fixed w-full z-40 bg-light-ivory">
       <div className="mx-auto max-w-5xl flex justify-between">
         <div className="h-24 sm:h-28 md:h-32 flex items-center">
           <NavLink to="">
