@@ -43,7 +43,7 @@ export const Contactenos = () => {
                   </span>
                 </div>
                 <span className="flex items-end mb-2 sm:mb-5">
-                  <a className="text-chocolate-brown bg-vibrant-yellow mt-2 px-4 py-3 text-lg font-bold">Llena el formulario aquí</a>
+                  <a className="text-chocolate-brown bg-vibrant-yellow mt-2 px-2 py-3 text-lg font-bold">Llena el formulario aquí</a>
                 </span>
               </div>
             </section>

@@ -5,7 +5,9 @@ export const FullClientLayout = () => {
   return (
     <section className='font-tahoma bg-light-ivory relative m-0 p-0 min-h-full min-w-full'>
       <Navbar />
-      <Outlet />
+      <main className='pt-32'>
+        <Outlet />
+      </main>
       <Footer />
     </section>
   )
