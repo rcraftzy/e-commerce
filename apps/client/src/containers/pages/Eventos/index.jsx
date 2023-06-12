@@ -1,5 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Autoplay, Navigation } from "swiper"
+import { Button, Modal } from "@mui/material"
+import { useState } from "react"
 
 export const Eventos = () => {
   return (
@@ -75,6 +77,10 @@ export const Eventos = () => {
 }
 
 const ItemSwiper = ({title, subtitle, img, secondSubtitle}) => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const onlyTitleClass = !title ? "top-5" : "top-8"
   const twoSubtitle = !secondSubtitle ? "" : "top-11"
   return (
@@ -96,7 +102,41 @@ const ItemSwiper = ({title, subtitle, img, secondSubtitle}) => {
           </span>
         </div>
       </div>
-      <button className="mb-4 bg-intense-orange rounded-box text-white font-bold px-8 py-1">Más información</button>
+      <button onClick={handleOpen} className="mb-4 bg-intense-orange rounded-box text-white font-bold px-8 py-1">Más información</button>
+
+<Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <div className="bg-light-ivory w-[620px] rounded-[40px]  mx-auto absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%]">
+          <div className="border-t-intense-orange mt-16 py-4 border-t-8">
+            <h2 className="flex-2 text-4xl text-center font-ifc-insane-rodeo-bold text-fire-red">Fiestas Infantiles</h2>
+          </div>
+          <div className="flex mb-4 gap-10 px-20">
+            <div className="flex flex-col gap-3">
+              <header className="flex flex-col text-center justify-center">
+                <h2 className="font-ifc-insane-rodeo-bold text-9xl text-intense-orange">-</h2>
+                <h2 className="text-intense-orange text-2xl font-bold">¿Quieres celebrar por lo alto?</h2>
+              </header>
+              <div>
+                <p className="text-chocolate-brown text-center text-sm">
+                  Del rodeo y Unión Recreativa hacen de tu fiesta una fecha inolvidable, con
+                  recreación dirigida, música, decoración temática, pintucaritas, Globoflexia y
+                  mucho más. ¡Qué esperas para celebrar junto a nosotros
+                </p>
+              </div>
+
+            </div>
+          </div>
+          <footer className="flex justify-center px-20 pb-20">
+            <button className="px-9 py-2 bg-vibrant-yellow text-xl font-bold text-chocolate-brown">
+              Contiza y reserva aquí
+            </button>
+          </footer>
+        </div>
+      </Modal>
     </>
   )
 }

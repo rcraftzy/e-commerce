@@ -1,4 +1,36 @@
+import emailjs from '@emailjs/browser'
+import { useState } from 'react';
 export const Contactenos = () => {
+  const [formData, setFormData] = useState({
+    email: '',
+    name: '',
+    phoneNumber: '',
+    subject: '',
+    message: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm(import.meta.env.VITE_CONTACT_SERVICE_ID, import.meta.env.VITE_CONTACT_TEMPLATE_ID, e.target, import.meta.env.VITE_CONTACT_USER_ID)
+      .then((result) => {
+        console.log(result.text);
+      })
+      .catch((error) => {
+        console.error(error.text);
+      });
+    setFormData({
+      email: '',
+      name: '',
+      phoneNumber: '',
+      subject: '',
+      message: '',
+    })
+  };
   return (
     <>
       <section>
@@ -12,18 +44,56 @@ export const Contactenos = () => {
               </div> 
             </section>
             <div className="mt-4"> 
-              <form action="" className="flex gap-4">
+              <form onSubmit={handleSubmit} className="flex gap-4">
                 <div className="flex flex-1 flex-col gap-4">
-                  <input type="text" className="text-2xl p-1 pl-6 rounded-3xl font-bold" placeholder="Nombre*" />
-                  <input type="text" className="text-2xl p-1 pl-6 rounded-3xl font-bold" placeholder="Correo electrónico*" />
-                  <input type="text" className="text-2xl p-1 pl-6 rounded-3xl font-bold" placeholder="Número de celular*" />
+                  <input 
+                    type="text" 
+                    name="name"
+                    className="text-2xl p-1 pl-6 rounded-3xl font-bold" 
+                    placeholder="Nombre*" 
+                    value={formData.name} 
+                    onChange={handleChange}
+                    required 
+                  />
+                  <input 
+                    type="text" 
+                    className="text-2xl p-1 pl-6 rounded-3xl font-bold" 
+                    placeholder="Correo electrónico*" 
+                    value={formData.email} 
+                    name="email"
+                    onChange={handleChange}
+                    required 
+                  />
+                  <input 
+                    type="text" 
+                    className="text-2xl p-1 pl-6 rounded-3xl font-bold" 
+                    placeholder="Número de celular*" 
+                    name="phoneNumber"
+                    value={formData.phoneNumber} 
+                    onChange={handleChange}
+                    required 
+                  />
                   <div>
-                    <button className="text-chocolate-brown bg-vibrant-yellow mt-6 mb-32 px-11 py-3 text-lg font-bold" type="button">Enviar Mensaje</button>
+                    <button className="text-chocolate-brown bg-vibrant-yellow mt-6 mb-32 px-11 py-3 text-lg font-bold" type="submit">Enviar Mensaje</button>
                   </div>
                 </div>
                 <div className="flex flex-1 flex-col gap-4">
-                  <input type="text" className="text-2xl p-1 pl-6 rounded-3xl font-bold" placeholder="Motivo de consulta**" />
-                  <textarea className="text-2xl p-2 pl-6 rounded-3xl font-bold" placeholder="Mensaje*" rows="" cols=""></textarea>
+                  <input 
+                    type="text" 
+                    className="text-2xl p-1 pl-6 rounded-3xl font-bold" 
+                    placeholder="Motivo de consulta*" 
+                    name="subject"
+                    value={formData.subject} 
+                    onChange={handleChange}
+                    required 
+                  />
+                  <textarea 
+                    value={formData.message} 
+                    className="text-2xl p-2 pl-6 rounded-3xl font-bold" 
+                    placeholder="Mensaje*" 
+                    name="message"
+                    onChange={handleChange}
+                  ></textarea>
                 </div>
               </form>
             </div>
