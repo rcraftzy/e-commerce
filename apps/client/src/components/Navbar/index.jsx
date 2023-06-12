@@ -5,7 +5,7 @@ import { HamburguesaIcon } from "../Icons"
 export const links = [
   {
     label: "Menú",
-    to: ""
+    to: "menu"
   },
   {
     label: "Restaurantes",
@@ -33,7 +33,9 @@ export const Navbar = () => {
     <header className="fixed w-full z-20 bg-light-ivory">
       <div className="mx-auto max-w-5xl flex justify-between">
         <div className="h-24 sm:h-28 md:h-32 flex items-center">
-          <img className="w-48 sm:w-64" src="/assets/LOGO-PW.png" alt="Logo" />
+          <NavLink to="">
+            <img className="w-48 sm:w-64" src="/assets/LOGO-PW.png" alt="Logo" />
+          </NavLink>
         </div>
         <nav className="hidden md:inline-flex">
           <ul className="flex flex-row items-center">

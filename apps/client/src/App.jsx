@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Error404 } from './containers/errors/Error404.jsx';
 import { FullClientLayout } from './hocs/layouts/FullClientLayout.jsx';
-import { Admin, Contactenos, Eventos, Home, Nosotros, Restaurantes } from "./containers/pages/";
+import { Admin, Contactenos, Eventos, Home, Menu, Nosotros, Restaurantes } from "./containers/pages/";
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
         <Route element={<FullClientLayout />}>
           <Route path="*" element={<Error404 />} />
           <Route path="/" element={<Home />} />
+          <Route path="/menu" element={<Menu />} />
           <Route path="/contactenos" element={<Contactenos />} />
           <Route path="/nosotros" element={<Nosotros />} />
           <Route path="/eventos" element={<Eventos />} />
