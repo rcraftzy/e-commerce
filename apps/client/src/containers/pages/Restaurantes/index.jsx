@@ -28,7 +28,7 @@ export const Restaurantes = () => {
           className="absolute bottom-[2rem] left-0 right-0 z-20"
           style={{ zIndex: "11" }}
         >
-          <DescriptionRestauranLocation />
+          {/* <DescriptionRestauranLocation /> */}
         </div>
       </div>
       <button
