@@ -1,14 +1,6 @@
 import React from "react";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-
-//import "swiper/css/scrollbar";
-
-//import "./styles.css";
-
-// import required modules
+import "swiper/css/scrollbar";
 import { Scrollbar } from "swiper";
 import { RestauranItemLocation } from "./RestauranItemLocation";
 
@@ -49,9 +41,11 @@ export const SwiperRestaurantLocation = () => {
         }}
         modules={[Scrollbar]}
       >
-        {restaurantLocation.map((itemRestaurant, index) => (
-          <SwiperSlide key={index} className="rounded-full  ">
-            <RestauranItemLocation itemRestaurant={itemRestaurant} />
+        {restaurantLocation.map((itemRestaurantLocation, index) => (
+          <SwiperSlide key={index} style={{ background: "transparent" }}>
+            <RestauranItemLocation
+              itemRestaurantLocation={itemRestaurantLocation}
+            />
           </SwiperSlide>
         ))}
       </Swiper>

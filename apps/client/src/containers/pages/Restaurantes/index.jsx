@@ -10,34 +10,32 @@ import { useState } from "react";
 import { DescriptionRestauranLocation } from "./DescriptionRestauranLocation/DescriptionRestauranLocation";
 
 export const Restaurantes = () => {
+  const [activeDescription, setActiveDescription] = useState(false);
   return (
     <>
       <section className="relative mx-auto max-w-5xl  z-[1]">
         <MapConfiguration />
       </section>
-      <div
-        className="h-40 bg-green-400 relative  "
-        onClick={() => {
-          alert("ss");
-        }}
-      >
-        <div className="max-w-4xl h-full mx-auto ">
+      <div className="h-40 bg-green-400 relative ">
+        <div className="max-w-4xl h-full mx-auto  ">
           <SwiperRestaurantLocation />
         </div>
         <div
-          className="absolute bottom-[2rem] left-0 right-0 z-20"
-          style={{ zIndex: "20" }}
+          className="absolute bottom-[2rem] left-0 right-0 "
+          style={{ zIndex: "10" }}
         >
-          {/* <DescriptionRestauranLocation /> */}
+          {activeDescription && <DescriptionRestauranLocation />}
         </div>
       </div>
-      <button
-        onClick={() => {
-          alert("sssssss");
-        }}
-        type="button"
-        className=" bg-transparent fixed top-0 right-0 left-0 bottom-0 z-10 "
-      />
+      {activeDescription && (
+        <button
+          onClick={() => {
+            alert("sssssss");
+          }}
+          type="button"
+          className=" bg-transparent fixed top-0 right-0 left-0 bottom-0 z-10 "
+        />
+      )}
     </>
   );
 };

@@ -57,34 +57,34 @@ export const Eventos = () => {
             className="mySwiper"
             navigation={true}
           >
-            <SwiperSlide className="rounded-t-full">
+            <SwiperSlide style={{ background: "transparent" }}>
               <ItemSwiper
                 title="Fiestas"
                 subtitle="infantiles"
                 img="Foto-1.png"
               ></ItemSwiper>
             </SwiperSlide>
-            <SwiperSlide className="rounded-t-full">
+            <SwiperSlide style={{ background: "transparent" }}>
               <ItemSwiper
                 title="Eventos"
                 subtitle="Corporativos"
                 img="Foto-1.png"
               ></ItemSwiper>
             </SwiperSlide>
-            <SwiperSlide className="rounded-t-full">
+            <SwiperSlide style={{ background: "transparent" }}>
               <ItemSwiper
                 subtitle="Reservaciones"
                 img="Foto-1.png"
               ></ItemSwiper>
             </SwiperSlide>
-            <SwiperSlide className="rounded-t-full">
+            <SwiperSlide style={{ background: "transparent" }}>
               <ItemSwiper
                 secondSubtitle="Decoraciones"
                 subtitle="tematicas"
                 img="Foto-1.png"
               ></ItemSwiper>
             </SwiperSlide>
-            <SwiperSlide className="rounded-t-full">
+            <SwiperSlide style={{ background: "transparent" }}>
               <ItemSwiper subtitle="recreacion" img="Foto-1.png"></ItemSwiper>
             </SwiperSlide>
           </Swiper>
