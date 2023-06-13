@@ -16,7 +16,7 @@ export const Restaurantes = () => {
         <MapConfiguration />
       </section>
       <div
-        className="h-40 bg-green-400 relative "
+        className="h-40 bg-green-400 relative  "
         onClick={() => {
           alert("ss");
         }}
@@ -26,7 +26,7 @@ export const Restaurantes = () => {
         </div>
         <div
           className="absolute bottom-[2rem] left-0 right-0 z-20"
-          style={{ zIndex: "11" }}
+          style={{ zIndex: "20" }}
         >
           {/* <DescriptionRestauranLocation /> */}
         </div>
