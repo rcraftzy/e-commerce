@@ -8,9 +8,11 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { useState } from "react";
 import { DescriptionRestauranLocation } from "./DescriptionRestauranLocation/DescriptionRestauranLocation";
+import { useSelector } from "react-redux";
 
 export const Restaurantes = () => {
   const [activeDescription, setActiveDescription] = useState(false);
+
   return (
     <>
       <section className="relative mx-auto max-w-5xl  z-[1]">
