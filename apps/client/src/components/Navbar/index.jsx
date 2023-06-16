@@ -34,10 +34,10 @@ export const Navbar = () => {
 
   return (
     <header className="fixed w-full z-40 bg-light-ivory">
-      <div className="mx-auto max-w-5xl flex justify-between">
+      <div className="mx-auto max-w-5xl flex justify-between items-center">
         <div className="h-24 sm:h-28 md:h-32 flex items-center">
           <NavLink to="">
-            <img className="w-48 sm:w-64" src="/assets/LOGO-PW.png" alt="Logo" />
+            <img className="w-36 sm:w-60" src="/assets/LOGO-PW.png" alt="Logo" />
           </NavLink>
         </div>
         <nav className="hidden md:inline-flex">
@@ -58,23 +58,23 @@ export const Navbar = () => {
               pathname === "/menu" 
                 ?
                 (
-                  <li className="ml-2 h-full bg-fire-red flex items-center">
+                  <li className="ml-2 py-2 h-full bg-fire-red flex items-center">
                     <MenuShoppingCard />
                   </li>
                 )
-                : (<li className="ml-2 h-full bg-fire-red flex items-center">
-                  <a href="" className="flex flex-col justify-center px-9 gap-1">
+                : (<li className="ml-2 py-6 h-full bg-fire-red flex items-center">
+                  <NavLink to="/menu" className="flex flex-col justify-center px-9 gap-1">
                     <div className="w-20 h-auto fill-white">
                       <HamburguesaIcon />
                     </div>
                     <span className="text-center font-bold text-white">Pide aquí</span>
-                  </a>
+                  </NavLink>
                 </li>)
             }
           </ul>
         </nav>
         <DropdownMenu />
-        <div className="absolute right-0 top-40 md:hidden">
+        <div className="absolute right-0 top-28 md:hidden">
           {
             pathname === "/menu" 
               ?
