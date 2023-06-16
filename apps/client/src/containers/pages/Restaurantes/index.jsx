@@ -9,35 +9,44 @@ import Modal from "@mui/material/Modal";
 import { useState } from "react";
 import { DescriptionRestauranLocation } from "./DescriptionRestauranLocation/DescriptionRestauranLocation";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { closeDescriptionRestauranLocation } from "../../../redux/slices/restaurantMapLocationSlice";
+import { EstrellaIcon, HamburguesaIcon } from "../../../components/Icons";
+import { ButtomMap } from "./Buttom/ButtomMap";
+import { MovileDescriptionRestaurantLocation } from "./MovileDescriptionRestaurantLocation/MovileDescriptionRestaurantLocation";
 
 export const Restaurantes = () => {
-  const [activeDescription, setActiveDescription] = useState(false);
+  const { isActiveDescriptionRestauranLocation } = useSelector(
+    (state) => state?.restaurantMapLocation
+  );
 
   return (
     <>
-      <section className="relative mx-auto max-w-5xl  z-[1]">
+      <section className=" mx-auto max-w-5xl  z-[10] relative h-96">
         <MapConfiguration />
       </section>
-      <div className="h-40 bg-green-400 relative ">
-        <div className="max-w-4xl h-full mx-auto  ">
+      {/* MODO TABLE Y WEB */}
+      <div
+        className={`md:h-40  bg-moss-green relative z-20 hidden sm:block ${
+          isActiveDescriptionRestauranLocation ? "h-96" : "h-max"
+        }`}
+      >
+        <div
+          className={`md:max-w-4xl sm:max-w-xl max-w-sm h-full mx-auto  z-30  ${
+            isActiveDescriptionRestauranLocation && "hidden"
+          }`}
+        >
           <SwiperRestaurantLocation />
         </div>
-        <div
-          className="absolute bottom-[2rem] left-0 right-0 "
-          style={{ zIndex: "10" }}
-        >
-          {activeDescription && <DescriptionRestauranLocation />}
+        <div className="absolute bottom-[2rem] left-0 right-0  ">
+          {isActiveDescriptionRestauranLocation && (
+            <DescriptionRestauranLocation />
+          )}
         </div>
       </div>
-      {activeDescription && (
-        <button
-          onClick={() => {
-            alert("sssssss");
-          }}
-          type="button"
-          className=" bg-transparent fixed top-0 right-0 left-0 bottom-0 z-10 "
-        />
-      )}
+
+      {/* MODO CELULAR */}
+      <MovileDescriptionRestaurantLocation />
     </>
   );
 };
