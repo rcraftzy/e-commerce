@@ -8,27 +8,27 @@ export const SwiperRestaurantLocation = () => {
   const restaurantLocation = [
     {
       name: "Palatino",
-      direction: "CARRERA 7 No. 139 07 Local 305 ",
+      direction: "CARRERA P No. 139 07 Local 305 ",
     },
     {
-      name: "C.C. PORTAL 80",
-      direction: "Calle 80 #100 - 52  Local 3044",
+      name: "C.C. PORTAL",
+      direction: "Calle C.C #100 - 52  Local 3044",
     },
     {
-      name: "Palatino",
-      direction: "CARRERA 7 No. 139 07 Local 305 ",
+      name: "A.A Palatino",
+      direction: "CARRERA A.A No. 139 07 Local 305 ",
     },
     {
-      name: "Palatino",
-      direction: "CARRERA 7 No. 139 07 Local 305 ",
+      name: "B.B",
+      direction: "CARRERA B.B No. 139 07 Local 305 ",
     },
     {
-      name: "Palatino",
-      direction: "CARRERA 7 No. 139 07 Local 305 ",
+      name: "C.C",
+      direction: "CARRERA C.C No. 139 07 Local 305 ",
     },
     {
-      name: "Palatino",
-      direction: "CARRERA 7 No. 139 07 Local 305 ",
+      name: "D.D",
+      direction: "CARRERA D.D No. 139 07 Local 305 ",
     },
   ];
   return (
@@ -40,6 +40,18 @@ export const SwiperRestaurantLocation = () => {
           dragSize: 400,
         }}
         modules={[Scrollbar]}
+        className="swiper-container"
+        breakpoints={{
+          768: {
+            slidesPerView: 4,
+          },
+          640: {
+            slidesPerView: 2,
+          },
+          0: {
+            slidesPerView: 1,
+          },
+        }}
       >
         {restaurantLocation.map((itemRestaurantLocation, index) => (
           <SwiperSlide key={index} style={{ background: "transparent" }}>
