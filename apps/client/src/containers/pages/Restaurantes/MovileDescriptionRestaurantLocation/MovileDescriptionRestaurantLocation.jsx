@@ -7,41 +7,49 @@ import { useEffect } from "react";
 const restaurantLocation = [
   {
     id: 1,
-    name: "Palatino",
-    direction: "CARRERA P No. 139 07 Local 305 ",
+    geocode: [-2.7407747, -78.8494491],
+    name: "Emilio Abad",
+    direction: "CARRERA D.D No. 139 07 Local 305 ",
   },
   {
     id: 2,
-    name: "C.C. PORTAL",
-    direction: "Calle C.C #100 - 52  Local 3044",
+    geocode: [-2.7446874, -78.8483158],
+    name: "Hotel",
+    direction: "CARRERA D.D No. 139 07 Local 305 ",
   },
   {
     id: 3,
-    name: "A.A Palatino",
-    direction: "CARRERA A.A No. 139 07 Local 305 ",
+    geocode: [-2.7419321, -78.8476359],
+    name: "cafe",
+    direction: "CARRERA D.D No. 139 07 Local 305 ",
   },
   {
     id: 4,
-    name: "B.B",
-    direction: "CARRERA B.B No. 139 07 Local 305 ",
+    geocode: [-2.7407747, -78.8494491],
+    name: "Emilio Abad",
+    direction: "CARRERA D.D No. 139 07 Local 305 ",
   },
   {
     id: 5,
-    name: "C.C",
-    direction: "CARRERA C.C No. 139 07 Local 305 ",
+    geocode: [-2.7446874, -78.8483158],
+    name: "Hotel",
+    direction: "CARRERA D.D No. 139 07 Local 305 ",
   },
   {
     id: 6,
-    name: "D.D",
+    geocode: [-2.7419321, -78.8476359],
+    name: "cafe",
     direction: "CARRERA D.D No. 139 07 Local 305 ",
   },
 ];
 
-export const MovileDescriptionRestaurantLocation = () => {
+export const MovileDescriptionRestaurantLocation = ({ map }) => {
   const [valueLocation, setValueLocation] = useState({});
   const changeRestaurantLocation = (e) => {
     const id = e.target.value;
-    setValueLocation(restaurantLocation?.find((item) => item?.id == id));
+    const restaurant = restaurantLocation?.find((item) => item?.id == id);
+    map.setView(restaurant?.geocode, 20);
+    setValueLocation(restaurant);
   };
   useEffect(() => {
     setValueLocation(restaurantLocation?.[0]);
