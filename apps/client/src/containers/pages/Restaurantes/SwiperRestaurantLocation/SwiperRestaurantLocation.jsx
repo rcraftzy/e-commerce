@@ -4,30 +4,36 @@ import "swiper/css/scrollbar";
 import { Scrollbar } from "swiper";
 import { RestauranItemLocation } from "./RestauranItemLocation";
 
-export const SwiperRestaurantLocation = () => {
+export const SwiperRestaurantLocation = ({ map }) => {
   const restaurantLocation = [
     {
-      name: "Palatino",
-      direction: "CARRERA P No. 139 07 Local 305 ",
+      geocode: [-2.7407747, -78.8494491],
+      name: "Emilio Abad",
+      direction: "CARRERA D.D No. 139 07 Local 305 ",
     },
     {
-      name: "C.C. PORTAL",
-      direction: "Calle C.C #100 - 52  Local 3044",
+      geocode: [-2.7446874, -78.8483158],
+      name: "Hotel",
+      direction: "CARRERA D.D No. 139 07 Local 305 ",
     },
     {
-      name: "A.A Palatino",
-      direction: "CARRERA A.A No. 139 07 Local 305 ",
+      geocode: [-2.7419321, -78.8476359],
+      name: "cafe",
+      direction: "CARRERA D.D No. 139 07 Local 305 ",
     },
     {
-      name: "B.B",
-      direction: "CARRERA B.B No. 139 07 Local 305 ",
+      geocode: [-2.7407747, -78.8494491],
+      name: "Emilio Abad",
+      direction: "CARRERA D.D No. 139 07 Local 305 ",
     },
     {
-      name: "C.C",
-      direction: "CARRERA C.C No. 139 07 Local 305 ",
+      geocode: [-2.7446874, -78.8483158],
+      name: "Hotel",
+      direction: "CARRERA D.D No. 139 07 Local 305 ",
     },
     {
-      name: "D.D",
+      geocode: [-2.7419321, -78.8476359],
+      name: "cafe",
       direction: "CARRERA D.D No. 139 07 Local 305 ",
     },
   ];
@@ -57,6 +63,7 @@ export const SwiperRestaurantLocation = () => {
           <SwiperSlide key={index} style={{ background: "transparent" }}>
             <RestauranItemLocation
               itemRestaurantLocation={itemRestaurantLocation}
+              map={map}
             />
           </SwiperSlide>
         ))}

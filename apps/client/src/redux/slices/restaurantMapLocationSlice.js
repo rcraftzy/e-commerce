@@ -5,6 +5,7 @@ const restaurantMapLocationSlice = createSlice({
   initialState: {
     isActiveDescriptionRestauranLocation: false,
     currentRestaurantLocation: {},
+    map: {},
   },
   reducers: {
     addRestaurantLocation: (state, action) => {
@@ -14,8 +15,15 @@ const restaurantMapLocationSlice = createSlice({
     closeDescriptionRestauranLocation: (state, action) => {
       state.isActiveDescriptionRestauranLocation = false;
     },
+    addMapConfiguration: (state, action) => {
+      console.log(action);
+      //state.map = action.payload;
+    },
   },
 });
-export const { addRestaurantLocation, closeDescriptionRestauranLocation } =
-  restaurantMapLocationSlice.actions;
+export const {
+  addRestaurantLocation,
+  closeDescriptionRestauranLocation,
+  addMapConfiguration,
+} = restaurantMapLocationSlice.actions;
 export default restaurantMapLocationSlice.reducer;

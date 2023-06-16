@@ -1,12 +1,18 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { addRestaurantLocation } from "../../../../redux/slices/restaurantMapLocationSlice";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useCallback } from "react";
 
-export const RestauranItemLocation = ({ itemRestaurantLocation }) => {
+export const RestauranItemLocation = ({ itemRestaurantLocation, map }) => {
   const dispatch = useDispatch();
-  const handleDescriptionRestauranLocation = () => {
+
+  const handleDescriptionRestauranLocation = useCallback(() => {
     dispatch(addRestaurantLocation(itemRestaurantLocation));
-  };
+    map.setView(itemRestaurantLocation?.geocode, 20);
+  }, [dispatch, itemRestaurantLocation, map]);
+
   return (
     <button
       onClick={handleDescriptionRestauranLocation}

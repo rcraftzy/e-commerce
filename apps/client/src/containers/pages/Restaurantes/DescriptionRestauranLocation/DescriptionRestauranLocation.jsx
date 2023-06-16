@@ -3,18 +3,19 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { closeDescriptionRestauranLocation } from "../../../../redux/slices/restaurantMapLocationSlice";
 
-export const DescriptionRestauranLocation = () => {
+export const DescriptionRestauranLocation = ({ map }) => {
   const dispatch = useDispatch();
   const { currentRestaurantLocation } = useSelector(
     (state) => state?.restaurantMapLocation
   );
   const handleClose = () => {
     dispatch(closeDescriptionRestauranLocation());
+    map.setView([-2.7404828, -78.8507159], 15);
   };
   return (
     <div className="md:max-w-4xl max-w-xl h-full mx-auto relative bg-yellow-500 z-50 ">
-      <div className="flex w-full justify-between  absolute md:-top-[20rem] -top-[27rem]">
-        <div className="bg-fire-red w-40 relative h-[18rem] p-3  text-center rounded-t-[2rem]">
+      <div className="flex w-full md:w-40  justify-between  absolute md:-top-[20rem] -top-[28rem]">
+        <div className="bg-fire-red w-44 relative h-[18rem] p-3  text-center rounded-t-[2rem]">
           <button
             type="button"
             onClick={handleClose}
@@ -29,7 +30,7 @@ export const DescriptionRestauranLocation = () => {
             {currentRestaurantLocation?.name}
           </div>
         </div>
-        <div className="bg-orange-500 w-40 relative h-[20rem] p-3 overflow-hidden text-center rounded-t-[2rem] md:hidden visible ">
+        <div className="bg-orange-500 w-44 relative h-[20rem] p-3 overflow-hidden text-center rounded-t-[2rem] md:hidden visible ">
           <div className="font-ifc-insane-rodeo-bold text-9xl text-white h-20 absolute -top-9 right-0 left-0 flex items-center flex-col">
             -
           </div>
