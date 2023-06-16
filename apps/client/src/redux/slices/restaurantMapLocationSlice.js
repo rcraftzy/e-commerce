@@ -5,19 +5,14 @@ const restaurantMapLocationSlice = createSlice({
   initialState: {
     isActiveDescriptionRestauranLocation: false,
     currentRestaurantLocation: {},
-    map: {},
   },
   reducers: {
     addRestaurantLocation: (state, action) => {
       state.currentRestaurantLocation = action.payload;
       state.isActiveDescriptionRestauranLocation = true;
     },
-    closeDescriptionRestauranLocation: (state, action) => {
+    closeDescriptionRestauranLocation: (state) => {
       state.isActiveDescriptionRestauranLocation = false;
-    },
-    addMapConfiguration: (state, action) => {
-      console.log(action);
-      //state.map = action.payload;
     },
   },
 });
