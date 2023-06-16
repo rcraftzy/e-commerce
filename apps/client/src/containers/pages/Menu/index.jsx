@@ -1,4 +1,4 @@
-import { Box, Button, Modal } from "@mui/material"
+import { Modal } from "@mui/material"
 import { WhatsAppIcon } from "../../../components"
 import { useState } from "react"
 
@@ -131,9 +131,9 @@ const MenuItem = ({name}) => {
   const handleClose = () => setOpen(false);
   return (
     <>
-      <Button onClick={handleOpen}>
+      <button onClick={handleOpen}>
         <h2 className="border-t-chocolate-brown border-t-8 text-lg font-bold text-chocolate-brown">{name}</h2>
-      </Button>
+      </button>
       <Modal
         open={open}
         onClose={handleClose}
