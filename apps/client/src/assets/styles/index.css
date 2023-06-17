@@ -10,6 +10,13 @@
     font-style: normal;
     src: url('/assets/fonts/Tahoma/Tahoma Regular font.ttf') format('ttf'),
   }
+  body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    min-height: 100vh;
+    background-color: #f8f4ea;
+  }
 }
 
 .swiper {
