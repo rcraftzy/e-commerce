@@ -43,7 +43,7 @@ export const SwiperRestaurantLocation = ({ map }) => {
         slidesPerView={4}
         spaceBetween={10}
         scrollbar={{
-          dragSize: 400,
+          dragSize: 100,
         }}
         modules={[Scrollbar]}
         className="swiper-container"

@@ -10,9 +10,11 @@ import { ProductItem } from "./ProductItem";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { subtotalProduct } from "../../redux/slices/menuProductSelectedCartSlice";
+import { useNavigate } from "react-router-dom";
 
 export const MenuShoppingCard = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { cart, subtotal } = useSelector(
     (state) => state.menuProductSelectedCart
   );
@@ -24,6 +26,10 @@ export const MenuShoppingCard = () => {
   useEffect(() => {
     dispatch(subtotalProduct());
   }, [dispatch, open]);
+
+  const handlePay = () => {
+    navigate("/carrito-compras/");
+  };
 
   return (
     <div>
@@ -58,6 +64,7 @@ export const MenuShoppingCard = () => {
               </div>
               <div className="flex justify-center">
                 <button
+                  onClick={handlePay}
                   className="text-chocolate-brown bg-vibrant-yellow px-11 py-4 text-lg font-bold"
                   type="submit"
                 >

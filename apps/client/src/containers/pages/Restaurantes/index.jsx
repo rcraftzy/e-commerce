@@ -152,13 +152,16 @@ export const Restaurantes = () => {
               isActiveDescriptionRestauranLocation ? "h-96" : "h-max"
             }`}
           >
-            <div
-              className={`md:max-w-4xl sm:max-w-xl max-w-sm h-full mx-auto  z-30  ${
-                isActiveDescriptionRestauranLocation && "hidden"
-              }`}
-            >
-              <SwiperRestaurantLocation map={map} />
-            </div>
+            {isActiveDescriptionRestauranLocation === false ? (
+              <div
+                className={`md:max-w-4xl sm:max-w-xl max-w-sm h-full mx-auto  z-30  `}
+              >
+                <SwiperRestaurantLocation map={map} />
+              </div>
+            ) : (
+              ""
+            )}
+
             <div className="absolute bottom-[2rem] left-0 right-0  ">
               {isActiveDescriptionRestauranLocation && (
                 <DescriptionRestauranLocation map={map} />
