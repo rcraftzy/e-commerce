@@ -4,7 +4,7 @@ import { ChevronDown, ToroIcon } from "../Icons"
 export const Navigator = () => {
   return (
     <div className="fixed z-30 w-full bg-light-ivory">
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto pr-10">
         <nav className="flex justify-between">
           <div className="h-24 sm:h-28 md:h-28 flex items-center">
             <NavLink to="/admin/">

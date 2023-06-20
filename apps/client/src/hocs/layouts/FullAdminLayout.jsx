@@ -4,9 +4,9 @@ export const FullAdminLayout = ({children}) => {
   return (
     <>
       <Navigator />
-      <main className="relative pt-[120px] mx-auto max-w-4xl">
+      <main className="relative  pt-[120px] mx-auto pr-10">
         <Sidebar />
-        <section className='absolute z-0 pl-[120px] inset-x-0'>
+        <section className='pl-[120px]'>
         {children} 
         </section>
       </main>  
