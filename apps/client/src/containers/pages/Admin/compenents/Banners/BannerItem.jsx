@@ -1,38 +1,28 @@
-import { Modal } from "@mui/material"
-import { BackgroundImage } from "../../../../../components"
-import { ButtonDelete, ButtonEdit, Button } from "../buttons"
+import { Modal } from "@mui/material";
+import { Button, ButtonDelete, ButtonEdit } from "../buttons"
 import { useState } from "react";
 
-export const ProductItem = (key,producto) => {
+export const BannerItem = (key, producto) => {
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false)
   const handleClick = () => setOpen(true)
 
-  const {nombre} = producto
+  const {titulo} = producto
   return (
     <li key={key}>
-      <div className="flex justify-between px-10">
+      <div className="flex  px-10 justify-between">
         <div className="flex gap-4">
           <aside></aside>
           <div>
-            <BackgroundImage
-              className={"bg-cover"} 
-              image={"/assets/menu/FONDO_MENU_PRODUCTOS.jpg"}
-            >
-              <img 
-                className="w-24 pb-2 pt-5 px-2" 
-                src="/assets/menu/HAMBURGUESAS.png" 
-                alt="item" 
-              />
-            </BackgroundImage>
+            <img 
+              className="w-24 pb-2 pt-5 px-2" 
+              src="/assets/menu/HAMBURGUESAS.png" 
+              alt="item" 
+            />
           </div>
           <article className="text-chocolate-brown">
-            <h3 className="text-xl">Hamburguesa Petagonia</h3>
+            <h3 className="text-xl">Detalles</h3>
             <ul className="leading-4">
-              <li>
-                <span className="font-bold">Nombre</span>
-                <span>{nombre}</span>
-              </li>
               <li>
                 <span className="font-bold">Precio unitario</span>
                 <span>$ {producto.precio}</span>
@@ -78,3 +68,4 @@ export const ProductItem = (key,producto) => {
     </li>
   )
 }
+

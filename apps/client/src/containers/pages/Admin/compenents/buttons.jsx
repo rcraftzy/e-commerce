@@ -11,10 +11,10 @@ export const Button = ({children, className, onClick}) => {
   )
 }
 
-export const ButtonCreate = ({onClick}) => {
+export const ButtonBorderGreen = ({onClick, children}) => {
   return (
     <Button onClick={onClick} className={"border-moss-green px-9 text-moss-green"}>
-      Crear
+      {children}
     </Button>
   )
 }
@@ -27,10 +27,10 @@ export const ButtonEdit = ({onClick}) => {
   )
 }
 
-export const ButtonDelete = ({onClick}) => {
+export const ButtonDelete = ({children ,onClick}) => {
   return (
     <Button onClick={onClick} className={"border-fire-red px-9 text-fire-red"}>
-      Eliminar
+      {children}
     </Button>
   )
 }
