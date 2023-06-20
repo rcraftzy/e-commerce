@@ -12,10 +12,12 @@ import {
   Restaurantes,
 } from "./containers/pages/";
 import { CarritoCompras } from "./containers/pages/CarritoCompras/index.jsx";
+import ScrollToTop from "./ScrollToTop/index.jsx";
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route element={<FullClientLayout />}>
           <Route path="*" element={<Error404 />} />
@@ -26,7 +28,7 @@ function App() {
           <Route path="/eventos" element={<Eventos />} />
           <Route path="/restaurantes" element={<Restaurantes />} />
         </Route>
-        <Route path="/carrito-compras/" element={<CarritoCompras />} />
+        <Route path="/carrito-compras" element={<CarritoCompras />} />
         <Route path="/admin/" element={<Admin />} />
         <Route path="/admin/login" element={<Login />} />
       </Routes>

@@ -4,7 +4,8 @@ const menuProductSelectedCartSlice = createSlice({
   name: "menuProductSelectedCart",
   initialState: {
     cart: [],
-    subtotal: (0.0).toFixed(3),
+    subtotal: 0,
+    currentCategory: {},
   },
   reducers: {
     addProductToCart: (state, action) => {
@@ -60,6 +61,10 @@ const menuProductSelectedCartSlice = createSlice({
         state.subtotal = 0;
       }
     },
+    addSelectedCategory: (state, action) => {
+      const { category } = action.payload;
+      state.currentCategory = category;
+    },
   },
 });
 
@@ -68,5 +73,6 @@ export const {
   incrementItem,
   decrementItem,
   subtotalProduct,
+  addSelectedCategory,
 } = menuProductSelectedCartSlice.actions;
 export default menuProductSelectedCartSlice.reducer;

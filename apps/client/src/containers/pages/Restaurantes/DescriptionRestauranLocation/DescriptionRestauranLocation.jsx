@@ -13,7 +13,7 @@ export const DescriptionRestauranLocation = ({ map }) => {
     map.setView([-2.7404828, -78.8507159], 15);
   };
   return (
-    <div className="md:max-w-4xl max-w-xl h-full mx-auto relative bg-yellow-500 z-50 ">
+    <div className="md:max-w-4xl max-w-xl h-full mx-auto relative bg-yellow-500 z-50 font-tahoma">
       <div className="flex w-full md:w-40  justify-between  absolute md:-top-[20rem] -top-[28rem]">
         <div className="bg-fire-red w-44 relative h-[18rem] p-3  text-center rounded-t-[2rem]">
           <button

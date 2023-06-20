@@ -7,11 +7,6 @@ export const Menu = () => {
     <>
       <section className="border-t-fire-red border-t-8">
         <div className="max-w-5xl mx-auto relative">
-          <aside>
-            <div className="absolute w-20 fill-light-ivory right-8 top-8 bg-moss-green p-3 rounded-full">
-              <WhatsAppIcon />
-            </div>
-          </aside>
           <div className="flex justify-center gap-12">
             <span className="font-ifc-insane-rodeo-bold text-9xl text-intense-orange">
               -

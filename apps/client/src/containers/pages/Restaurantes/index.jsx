@@ -112,12 +112,11 @@ export const Restaurantes = () => {
     () => (
       <div className="mx-auto max-w-5xl  z-[10] relative">
         <MapContainer
-          // estas cordenadas esta en la x por defecto
           center={[-2.7404828, -78.8507159]}
           zoom={15}
           ref={setMap}
           bounceAtZoomLimits={true}
-          className="h-[20rem] w-full pt-20"
+          className="h-[26rem] w-full pt-20"
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

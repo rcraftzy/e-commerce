@@ -41,16 +41,21 @@ export const ProductItem = ({ product }) => {
     <>
       <button
         onClick={handleOpen}
-        className={`bg-red-50 flex flex-col items-center  bg-[url('/assets/menu/FONDO_MENU_PRODUCTOS.jpg')]`}
+        className={`bg-red-50 flex flex-col items-center `}
       >
-        <img
-          src={
-            product?.image == undefined
-              ? NOT_FOUNT_IMAGE_PRODUCT
-              : product?.image
-          }
-          className="h-full w-[9rem] object-cover"
-        />
+        <div
+          className={`bg-[url('/assets/menu/FONDO_MENU_PRODUCTOS.jpg')] w-full h-24 flex justify-center overflow-hidden`}
+        >
+          <img
+            src={
+              product?.image == undefined
+                ? NOT_FOUNT_IMAGE_PRODUCT
+                : product?.image
+            }
+            className="h-full  object-cover hover:scale-105 transition-all duration-100"
+          />
+        </div>
+
         <h2 className="border-t-chocolate-brown border-t-8 text-lg font-bold text-chocolate-brown">
           {product?.name}
         </h2>

@@ -1,12 +1,12 @@
 import React from "react";
 
-export const DetailCart = () => {
+export const DetailCartMovile = () => {
   return (
-    <div className="font-tahoma font-bold text-sm text-black mx-4">
-      <div className="overflow-hidden h-96 overflow-y-scroll">
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((cart, index) => (
+    <div className=" p-3 ">
+      <div className="max-h-96  overflow-hidden overflow-y-scroll">
+        {[1, 2, 3, 4, 5, 6].map((cart, index) => (
           <div className="flex mt-6  " key={index}>
-            <div className="mr-4   flex  flex-col items-center relative pt-4">
+            <div className="mr-4  flex flex-1 sm:flex-none  flex-col items-center relative pt-4">
               <h4 className="bg-chocolate-brown  rounded-full w-5 h-5 font-bold text-white flex items-center justify-center absolute top-2  ">
                 2
               </h4>
@@ -34,12 +34,13 @@ export const DetailCart = () => {
                 <h4 className="font-normal">Hit de lulo</h4>
               </div>
             </div>
-            <div className="flex-1 text-moss-green">
+            <div className="flex-1 text-moss-green text-center">
               <span>$57.600</span>
             </div>
           </div>
         ))}
       </div>
+
       <div className="flex gap-4 mt-8">
         <button className="bg-slate-300 rounded-lg  px-3 py-2">
           Código de descuento
