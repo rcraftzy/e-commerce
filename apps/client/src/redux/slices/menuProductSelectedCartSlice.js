@@ -1,10 +1,11 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const menuProductSelectedCartSlice = createSlice({
   name: "menuProductSelectedCart",
   initialState: {
     cart: [],
-    subtotal: (0.0).toFixed(3),
+    subtotal: 0,
+    currentCategory: {},
   },
   reducers: {
     addProductToCart: (state, action) => {
@@ -43,8 +44,11 @@ const menuProductSelectedCartSlice = createSlice({
           exitProduct.amount = amount;
         }
       }
+      if (state.cart.length === 0) {
+        state.subtotal = 0;
+      }
     },
-    subtotalProduct: (state, action) => {
+    subtotalProduct: (state) => {
       if (state.cart.length !== 0) {
         state.subtotal = state.cart?.reduce(function (
           accumulator,
@@ -53,7 +57,13 @@ const menuProductSelectedCartSlice = createSlice({
           return accumulator + Number(currentValue?.price);
         },
         0);
+      } else {
+        state.subtotal = 0;
       }
+    },
+    addSelectedCategory: (state, action) => {
+      const { category } = action.payload;
+      state.currentCategory = category;
     },
   },
 });
@@ -63,5 +73,6 @@ export const {
   incrementItem,
   decrementItem,
   subtotalProduct,
+  addSelectedCategory,
 } = menuProductSelectedCartSlice.actions;
 export default menuProductSelectedCartSlice.reducer;

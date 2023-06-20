@@ -5,10 +5,10 @@
 @layer base {
   /* Tahoma */
   @font-face {
-    font-family: 'Tahoma';
+    font-family: "Tahoma";
     font-weight: 400;
     font-style: normal;
-    src: url('/assets/fonts/Tahoma/Tahoma Regular font.ttf') format('ttf'),
+    src: url("/assets/fonts/Tahoma/Tahoma Regular font.ttf") format("ttf");
   }
   body {
     margin: 0;
@@ -70,4 +70,19 @@
   stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
   stroke-dasharray: 125.6;
   transform: rotate(-90deg);
+}
+
+/* Estilos para WebKit (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 10px; /* Ancho de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-track-piece {
+  background: #e1ead6;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cb261e;
+  border-radius: 20px;
 }

@@ -56,7 +56,7 @@ export const MovileDescriptionRestaurantLocation = ({ map }) => {
   }, []);
 
   return (
-    <div className="h-[25rem] bg-moss-green relative z-20 sm:hidden block ">
+    <div className="h-[25rem] bg-moss-green relative z-20 sm:hidden block font-tahoma ">
       <div className="absolute  -top-16 left-0 right-0 ">
         <div className="max-w-max mx-auto pb-2 ">
           <select

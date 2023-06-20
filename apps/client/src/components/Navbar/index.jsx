@@ -36,15 +36,16 @@ export const Navbar = () => {
   return (
     <header className="fixed w-full z-40 bg-light-ivory">
       <div className="mx-auto max-w-5xl flex justify-between items-center">
-        <div className="h-24 sm:h-28 md:h-32 flex items-center">
-          <NavLink to="">
-            <img
-              className="w-36 sm:w-60"
-              src="/assets/LOGO-PW.png"
-              alt="Logo"
-            />
-          </NavLink>
-        </div>
+        <NavLink
+          to={"/"}
+          className="h-24 sm:h-28 md:h-24  flex items-center overflow-hidden  hover:cursor-pointer bg-blue-400 scale-105"
+        >
+          <img
+            className="w-36 sm:w-60 h-full  object-cover"
+            src="/assets/LOGO-PW.png"
+            alt="Logo"
+          />
+        </NavLink>
         <nav className="hidden md:inline-flex">
           <ul className="flex flex-row items-center">
             {links.map(({ label, to }) => (

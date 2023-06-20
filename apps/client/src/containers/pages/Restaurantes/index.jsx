@@ -112,12 +112,11 @@ export const Restaurantes = () => {
     () => (
       <div className="mx-auto max-w-5xl  z-[10] relative">
         <MapContainer
-          // estas cordenadas esta en la x por defecto
           center={[-2.7404828, -78.8507159]}
           zoom={15}
           ref={setMap}
           bounceAtZoomLimits={true}
-          className="h-[20rem] w-full pt-20"
+          className="h-[26rem] w-full pt-20"
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -152,13 +151,16 @@ export const Restaurantes = () => {
               isActiveDescriptionRestauranLocation ? "h-96" : "h-max"
             }`}
           >
-            <div
-              className={`md:max-w-4xl sm:max-w-xl max-w-sm h-full mx-auto  z-30  ${
-                isActiveDescriptionRestauranLocation && "hidden"
-              }`}
-            >
-              <SwiperRestaurantLocation map={map} />
-            </div>
+            {isActiveDescriptionRestauranLocation === false ? (
+              <div
+                className={`md:max-w-4xl sm:max-w-xl max-w-sm h-full mx-auto  z-30  `}
+              >
+                <SwiperRestaurantLocation map={map} />
+              </div>
+            ) : (
+              ""
+            )}
+
             <div className="absolute bottom-[2rem] left-0 right-0  ">
               {isActiveDescriptionRestauranLocation && (
                 <DescriptionRestauranLocation map={map} />

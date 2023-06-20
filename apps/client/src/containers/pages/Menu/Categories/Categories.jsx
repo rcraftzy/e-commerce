@@ -1,54 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import { CategoryItem } from "./CategoryItem";
+import { useSelector } from "react-redux";
 
 const categories = [
   {
     id: 1,
     name: "Combos",
+    img: "/assets/menu/ADICIONAL.png",
   },
   {
     id: 2,
     name: "Promociones",
+    img: "/assets/menu/HAMBURGUESAS.png",
   },
   {
     id: 3,
     name: "Hamburguesas",
+    img: "/assets/menu/PROMOCIONES.png",
   },
   {
     id: 4,
     name: "Entrada, Parrilla y Hot Dog",
+    img: "/assets/menu/ADICIONAL.png",
   },
   {
     id: 5,
     name: "Linea Verde",
+    img: "/assets/menu/PROMOCIONES.png",
   },
   {
     id: 6,
     name: "Menú infantil",
+    img: "/assets/menu/PROMOCIONES.png",
   },
   {
     id: 7,
     name: "Bebidas, Adicionales y mas",
+    img: "/assets/menu/PROMOCIONES.png",
   },
 ];
 
 export const Categories = () => {
   return (
-    <div className="flex gap-4 ">
+    <div className="flex gap-4 justify-between mt-2">
       {categories?.map((category) => (
-        <div
-          className="w-28 h-full border-b-fire-red border-b-8 "
-          key={category?.id}
-        >
-          <CategoryItem category={category} />
-        </div>
+        <CategoryItem category={category} key={category?.id} />
       ))}
-      <div>
-        <div></div>
-        <span className="text-center text-fire-red text-xl font-bold leading-[0.5px]">
-          Promociones
-        </span>
-      </div>
     </div>
   );
 };

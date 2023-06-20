@@ -1,11 +1,23 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Error404 } from './containers/errors/Error404.jsx';
-import { FullClientLayout } from './hocs/layouts/FullClientLayout.jsx';
-import { Admin, Contactenos, Eventos, Home, Login, Menu, Nosotros, Restaurantes } from "./containers/pages/";
+import { Error404 } from "./containers/errors/Error404.jsx";
+import { FullClientLayout } from "./hocs/layouts/FullClientLayout.jsx";
+import {
+  Admin,
+  Contactenos,
+  Eventos,
+  Home,
+  Login,
+  Menu,
+  Nosotros,
+  Restaurantes,
+} from "./containers/pages/";
+import { CarritoCompras } from "./containers/pages/CarritoCompras/index.jsx";
+import ScrollToTop from "./ScrollToTop/index.jsx";
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route element={<FullClientLayout />}>
           <Route path="*" element={<Error404 />} />
@@ -16,11 +28,12 @@ function App() {
           <Route path="/eventos" element={<Eventos />} />
           <Route path="/restaurantes" element={<Restaurantes />} />
         </Route>
+        <Route path="/carrito-compras" element={<CarritoCompras />} />
         <Route path="/admin/" element={<Admin />} />
         <Route path="/admin/login" element={<Login />} />
       </Routes>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
