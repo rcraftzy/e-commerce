@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { addSelectedCategory } from "../../../../redux/slices/menuProductSelectedCartSlice";
+import { addSelectedCategory } from "../../../../../redux/slices/menuProductSelectedCartSlice";
 import { useSelector } from "react-redux";
 export const CategoryItem = ({ category }) => {
   const dispatch = useDispatch();

@@ -1,6 +1,5 @@
 import { SnackbarProvider } from "notistack";
-import { Categories } from "./Categories/Categories";
-import { Products } from "./Products/Products";
+import { Categories, Products } from "./components";
 import { SnackbarUtilitiesConfigurator } from "../../../utilities";
 import { useEffect, useState } from "react";
 import { testingService } from "../../../services/testing.service";

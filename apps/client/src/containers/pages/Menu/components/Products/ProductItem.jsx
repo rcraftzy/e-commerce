@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Modal } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { addProductToCart } from "../../../../redux/slices/menuProductSelectedCartSlice";
+import { addProductToCart } from "../../../../../redux/slices/menuProductSelectedCartSlice";
 import { useSelector } from "react-redux";
 
 const NOT_FOUNT_IMAGE_PRODUCT =
