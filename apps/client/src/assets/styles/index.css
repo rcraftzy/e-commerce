@@ -19,6 +19,10 @@
   }
 }
 
+.clip-logo {
+  clip-path: polygon(93% 0, 9% 0, 8% 100%, 92% 100%);
+}
+
 .swiper {
   width: 100%;
   height: 100%;

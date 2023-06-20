@@ -38,10 +38,10 @@ export const Navbar = () => {
       <div className="mx-auto max-w-5xl flex justify-between items-center">
         <NavLink
           to={"/"}
-          className="h-24 sm:h-28 md:h-24  flex items-center overflow-hidden  hover:cursor-pointer bg-blue-400 scale-105"
+          className="clip-logo h-24 sm:h-28 md:h-24 flex items-center overflow-hidden  hover:cursor-pointer scale-x-100"
         >
           <img
-            className="w-36 sm:w-60 h-full  object-cover"
+            className="w-36 mt-2 sm:w-52 lg:w-64 h-full object-cover"
             src="/assets/LOGO-PW.png"
             alt="Logo"
           />
@@ -65,15 +65,17 @@ export const Navbar = () => {
                 <MenuShoppingCard />
               </li>
             ) : (
-              <li className="ml-2 py-6 h-full bg-fire-red flex items-center">
+              <li className="ml-2 py-2 h-full bg-fire-red flex items-center">
                 <NavLink
                   to="/menu"
-                  className="flex flex-col justify-center px-9 gap-1"
+                  className="flex flex-col justify-center px-7 gap-1"
                 >
-                  <div className="w-20 h-auto fill-white">
-                    <HamburguesaIcon />
-                  </div>
-                  <span className="text-center font-bold text-white">
+                    <div className="flex justify-center pt-4">
+                      <div className="w-16 h-auto fill-white">
+                        <HamburguesaIcon />
+                      </div>
+                    </div>
+                  <span className="text-center font-bold text-white pb-2">
                     Pide aquí
                   </span>
                 </NavLink>

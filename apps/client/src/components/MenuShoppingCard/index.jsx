@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import {
-  AdditionIcon,
-  DropItemIcon,
   ShoppingBag,
-  SubstractIcon,
 } from "../Icons";
 import { Modal } from "@mui/material";
 import { ProductItem } from "./ProductItem";
@@ -35,12 +32,14 @@ export const MenuShoppingCard = () => {
     <div>
       <button
         onClick={handleOpen}
-        className="flex flex-col justify-center px-9 gap-0"
+        className="flex flex-col justify-center px-7 gap-0"
       >
-        <div className="w-20 h-auto fill-white">
-          <ShoppingBag />
+        <div className="flex justify-center">
+          <div className="w-11 pt-1 text-center h-auto fill-white">
+            <ShoppingBag />
+          </div>
         </div>
-        <span className="text-center font-bold text-white leading-[16px]">
+        <span className="text-center font-bold text-sm pt-2 text-white leading-[16px]">
           Tu carrito
           <br /> de compra
         </span>
