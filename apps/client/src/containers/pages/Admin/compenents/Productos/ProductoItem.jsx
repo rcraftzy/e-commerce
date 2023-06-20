@@ -1,28 +1,38 @@
-import { Modal } from "@mui/material"
-import { BackgroundImage } from "../../../../../components"
-import { ButtonDelete, ButtonEdit, Button } from "../buttons"
-import { useState } from "react";
+import { BackgroundImage } from "../../../../../components";
+import { ButtonDelete, ButtonEdit } from "../buttons";
 
-export const ProductItem = (key,producto) => {
-  const [open, setOpen] = useState(false);
-  const handleClose = () => setOpen(false)
-  const handleClick = () => setOpen(true)
+export const ProductItem = ({
+  producto,
+  setOpen,
+  setCurrentItem,
+  setOpenDelete,
+}) => {
+  const handleEdit = () => {
+    setOpen({
+      option: "edit",
+      state: true,
+    });
+    setCurrentItem(producto);
+  };
+  const handleSelectedProductByDelete = () => {
+    setOpenDelete(true);
+    setCurrentItem(producto);
+  };
 
-  const {nombre} = producto
   return (
-    <li key={key}>
+    <li>
       <div className="flex justify-between px-10">
         <div className="flex gap-4">
           <aside></aside>
           <div>
             <BackgroundImage
-              className={"bg-cover"} 
+              className={"bg-cover"}
               image={"/assets/menu/FONDO_MENU_PRODUCTOS.jpg"}
             >
-              <img 
-                className="w-24 pb-2 pt-5 px-2" 
-                src="/assets/menu/HAMBURGUESAS.png" 
-                alt="item" 
+              <img
+                className="w-24 pb-2 pt-5 px-2"
+                src="/assets/menu/HAMBURGUESAS.png"
+                alt="item"
               />
             </BackgroundImage>
           </div>
@@ -31,7 +41,7 @@ export const ProductItem = (key,producto) => {
             <ul className="leading-4">
               <li>
                 <span className="font-bold">Nombre</span>
-                <span>{nombre}</span>
+                <span>{producto?.nombre}</span>
               </li>
               <li>
                 <span className="font-bold">Precio unitario</span>
@@ -49,32 +59,12 @@ export const ProductItem = (key,producto) => {
           </article>
         </div>
         <section className="flex flex-col justify-end gap-2">
-          <ButtonEdit />
-          <ButtonDelete onClick={handleClick}>
+          <ButtonEdit onClick={handleEdit} />
+          <ButtonDelete onClick={handleSelectedProductByDelete}>
             Eliminar
           </ButtonDelete>
-          <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <div className="bg-light-ivory w-[820px] rounded-[40px]  mx-auto absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%]">
-              <div className=" py-10 px-20">
-                <h2 className="font-bold text-5xl text-center mb-6 text-chocolate-brown">¿Deseas eliminar este elemento?</h2>
-                <footer className="flex justify-center gap-4">
-                  <Button className={"border-fire-red bg-fire-red text-white px-9"}>
-                    Eliminar
-                  </Button>
-                  <ButtonDelete onClick={handleClose} className="">
-                    Cancelar
-                  </ButtonDelete>
-                </footer>
-              </div>
-            </div>
-          </Modal>
         </section>
       </div>
     </li>
-  )
-}
+  );
+};

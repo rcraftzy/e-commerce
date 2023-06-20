@@ -1,5 +1,5 @@
-import { FullAdminLayout } from "../../../hocs/layouts/FullAdminLayout"
-import { Banners, Dashboard, Productos, Tickets } from "./compenents"
+import { FullAdminLayout } from "../../../hocs/layouts/FullAdminLayout";
+import { Banners, Dashboard, Productos, Tickets } from "./compenents";
 
 export const Admin = () => {
   return (
@@ -9,7 +9,5 @@ export const Admin = () => {
       <Productos />
       <Tickets />
     </FullAdminLayout>
-  )
-}
-
-
+  );
+};

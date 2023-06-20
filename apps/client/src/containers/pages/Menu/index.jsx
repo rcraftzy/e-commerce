@@ -1,5 +1,4 @@
 import { SnackbarProvider } from "notistack";
-import { WhatsAppIcon } from "../../../components";
 import { Categories } from "./Categories/Categories";
 import { Products } from "./Products/Products";
 import { SnackbarUtilitiesConfigurator } from "../../../utilities";
