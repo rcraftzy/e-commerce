@@ -21,11 +21,11 @@ export const RestauranItemLocation = ({ itemRestaurantLocation, map }) => {
           -
         </div>
 
-        <div className=" mt-12 px-2 leading-none">
+        <div className=" mt-12 px-5 leading-none">
           <h2 className="text-white font-ifc-insane-rodeo-bold md:text-3xl text-2xl ">
             {itemRestaurantLocation?.name}
           </h2>
-          <h3 className="text-white md:text-xl text-lg ">
+          <h3 className="text-white text-lg">
             {itemRestaurantLocation?.direction}
           </h3>
         </div>
