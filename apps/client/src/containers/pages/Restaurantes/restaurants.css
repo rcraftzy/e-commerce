@@ -19,8 +19,8 @@
 /* .mapIcon {
   filter: grayscale(10%);
 } */
-
-.swiper-container.cluster-icon-map {
+/* Estilos de los iconos del mapa */
+.cluster-icon-map {
   height: 3rem;
   width: 3rem;
   border-radius: 50%;
