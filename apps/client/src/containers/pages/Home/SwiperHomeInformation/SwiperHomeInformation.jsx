@@ -1,9 +1,10 @@
 import { Autoplay, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { HomeItemInformation } from "./HomeItemInformation";
+import { SwiperNavButtonHome } from "../../../../components/SwiperNavButton";
 export const SwiperHomeInformation = () => {
   return (
-    <section className="mx-auto max-w-5xl sm:-mb-14 -mb-[6rem]">
+    <section className="relative mx-auto max-w-5xl sm:-mb-14 -mb-[6rem]">
       <Swiper
         spaceBetween={0}
         centeredSlides={true}
@@ -12,7 +13,6 @@ export const SwiperHomeInformation = () => {
           disableOnInteraction: false,
         }}
         className="mt-6"
-        navigation={true}
         modules={[Autoplay, Navigation]}
       >
         {[1, 2, 3, 4, 5].map((item, index) => (
@@ -20,6 +20,7 @@ export const SwiperHomeInformation = () => {
             <HomeItemInformation />
           </SwiperSlide>
         ))}
+        <SwiperNavButtonHome />
       </Swiper>
     </section>
   );
