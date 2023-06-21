@@ -1,7 +1,5 @@
-import React from "react";
 import { Autoplay, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { BackgroundImage } from "../../../../components";
 import { HomeItemInformation } from "./HomeItemInformation";
 export const SwiperHomeInformation = () => {
   return (
