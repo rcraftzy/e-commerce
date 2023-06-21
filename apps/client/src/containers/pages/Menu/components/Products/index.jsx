@@ -59,7 +59,7 @@ export const Products = () => {
           Hamburguesas de carne - Carne y mas
         </h2>
       </header>
-      <section className="grid grid-cols-5 gap-8">
+      <section className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
         {items.map((item) => (
           <ProductItem product={item} key={item?.id} />
         ))}
