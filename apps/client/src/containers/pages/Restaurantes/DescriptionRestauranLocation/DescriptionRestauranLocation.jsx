@@ -16,7 +16,7 @@ export const DescriptionRestauranLocation = ({ map }) => {
   return (
     <div className=" max-w-md md:max-w-4xl z-50 mx-auto relative bg-intense-orange">
       <div className="flex gap-10 w-full justify-between absolute md:-top-[20rem] -top-[28rem]">
-        <div className="-mt-12 md:mt-0 flex-1 md:flex-none mb-20 bg-fire-red relative p-3 text-center rounded-t-[2rem]">
+        <div className="-mt-16 md:w-56 md:mt-0 flex-1 md:flex-none mb-20 bg-fire-red relative p-3 text-center rounded-t-[2rem]">
           <button
             type="button"
             onClick={handleClose}
@@ -24,26 +24,26 @@ export const DescriptionRestauranLocation = ({ map }) => {
           >
             X
           </button>
-          <div className="pt-4 flex justify-center">
-            <div className="w-10 fill-light-ivory">
+          <div className="pt-2 flex justify-center">
+            <div className="w-9 fill-light-ivory">
               <EstrellaIcon />
             </div>
           </div>
-          <div className="pt-2 text-light-ivory leading-7 text-3xl mb-10 font-ifc-insane-rodeo-bold ">
+          <div className="pt-2 text-light-ivory leading-7 line-clamp-1 text-3xl mb-10 font-ifc-insane-rodeo-bold ">
             {currentRestaurantLocation?.name}
           </div>
         </div>
-        <div className="-mt-12 md:mt-0 flex-1 lg:flex-none bg-intense-orange relative h-[20rem] p-3 overflow-hidden text-center rounded-t-[2rem] md:hidden visible ">
+        <div className="-mt-16 md:mt-0 flex-1 lg:flex-none bg-intense-orange relative h-[20rem] p-3 overflow-hidden text-center rounded-t-[2rem] md:hidden visible">
           <div className="flex justify-center">
             <div className="w-9 fill-light-ivory">
               <EstrellaIcon />
             </div>
           </div>
-          <div className="mb-1">
-            <h2 className="text-3xl font-ifc-insane-rodeo-bold  leading-7 text-light-ivory">
-              {currentRestaurantLocation?.name}
+          <div className="my-1">
+            <h2 className="text-3xl font-ifc-insane-rodeo-bold line-clamp-1 leading-5 text-light-ivory">
+              {currentRestaurantLocation?.name} ahora
             </h2>
-            <h2 className="mt-1 leading-[16px] text-sm text-light-ivory">
+            <h2 className="mt-1 leading-[16px] text-sm text-light-ivory line-clamp-2">
               CARRERA 7 No. 139 07 Local 305
             </h2>
           </div>
@@ -54,10 +54,10 @@ export const DescriptionRestauranLocation = ({ map }) => {
         <div className="flex md:flex-1">
           <div className="flex md:flex-row flex-1 flex-col ">
             <div className="flex-1 flex flex-col gap-5 m-5">
-              <h1 className="text-white text-4xl font-ifc-insane-rodeo-bold">
+              <h1 className="text-white text-4xl leading-7 line-clamp-1 font-ifc-insane-rodeo-bold">
                 {currentRestaurantLocation?.name}
               </h1>
-              <h2 className="text-white text-lg leading-5">
+              <h2 className="text-white text-lg leading-5 line-clamp-2">
                 {currentRestaurantLocation?.direction}
               </h2>
               <h2 className="text-white leading-4 text-lg">

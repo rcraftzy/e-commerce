@@ -59,7 +59,7 @@ export const ProductItem = ({ product }) => {
           />
         </div>
 
-        <h2 className="border-t-chocolate-brown border-t-8 text-lg font-bold text-chocolate-brown">
+        <h2 className="border-t-chocolate-brown leading-5 border-t-8 text-lg font-bold text-chocolate-brown">
           {product?.name}
         </h2>
       </button>

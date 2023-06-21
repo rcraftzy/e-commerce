@@ -9,7 +9,7 @@ export const SwiperRestaurantLocation = ({ map }) => {
     {
       geocode: [-2.7407747, -78.8494491],
       name: "Emilio Abad",
-      direction: "CARRERA D.D No. 139 07 Local 305 ",
+      direction: "CARRERA D.D No. 139 07 Local 305",
     },
     {
       geocode: [-2.7446874, -78.8483158],
