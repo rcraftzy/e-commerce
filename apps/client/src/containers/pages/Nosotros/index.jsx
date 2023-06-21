@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"
-import { HamburguesaIcon, MensajeIcon, ToroIcon } from "../../../components"
+import { BackgroundImage, HamburguesaIcon, ToroIcon } from "../../../components"
 
 export const Nosotros = () => {
   return (
@@ -50,24 +50,39 @@ export const Nosotros = () => {
           </article>
         </article>
       </section>
-      <section className="bg-moss-green mt-10 pb-10 pt-6">
-        <div className="mx-auto max-w-5xl flex">
-          <article className="flex-1">
-            <div className="flex items-center max-w-md mb-3">
-              <span className="font-ifc-insane-rodeo-bold text-9xl text-light-ivory">-</span>
-              <p className="text-light-ivory ml-3 font-sm">
-                Nuestra visión es, una mejor alternativa en
-                cuanto a productos, calidad y precios. Ser
-                reconocidos como una empresa modelo de
-                calidad y servicio en todos nuestros
-                restaurantes
-              </p>
+      <div className="">
+        <BackgroundImage className={"bg-cover"} image={"/assets/button-maderado-green.png"}>
+          <section className="mt-10 pb-10 pt-6">
+            <div className="mx-auto max-w-5xl flex">
+              <article className="flex-1">
+                <div className="flex items-center max-w-md mb-3">
+                  <span className="font-ifc-insane-rodeo-bold text-9xl text-light-ivory">-</span>
+                  <p className="text-light-ivory ml-3 font-sm">
+                    Nuestra visión es, una mejor alternativa en
+                    cuanto a productos, calidad y precios. Ser
+                    reconocidos como una empresa modelo de
+                    calidad y servicio en todos nuestros
+                    restaurantes
+                  </p>
+                </div>
+                <span className="flex justify-center sm:justify-start z-10 sm:mb-5">
+                  <BackgroundImage image={"/assets/button-maderado-amarillo.png"} className={"bg-cover"}>
+                    <div 
+                      className="flex items-center text-chocolate-brown py-6 px-5 h-10 text-lg font-bold"
+                    >
+                      <NavLink to="/menu" >
+                        Consulta nuestro menú 
+                      </NavLink>
+                    </div>
+                  </BackgroundImage>
+                </span>
+              </article>
+              <aside className="flex-1"></aside>
             </div>
-            <NavLink className="text-chocolate-brown bg-vibrant-yellow mt-2 px-4 py-3 font-bold">Conoce nuestro menú</NavLink>
-          </article>
-          <aside className="flex-1"></aside>
-        </div>
-      </section>
+          </section>
+        </BackgroundImage>
+      </div>
+
       <section className="max-w-5xl mx-auto text-center mt-12">
         <h2 className="font-ifc-insane-rodeo-bold text-5xl text-chocolate-brown">Aportando nuestros valores</h2>
         <div className="flex gap-12 justify-center mt-6">
@@ -159,7 +174,15 @@ export const Nosotros = () => {
           </span>
           <div className="relative flex items-center max-w-[380px]">
             <span className="absolute font-ifc-insane-rodeo-bold text-9xl text-white">-</span>
-            <NavLink className="ml-12 text-chocolate-brown bg-vibrant-yellow mt-2 px-4 py-3 font-bold">Envia tus datos en el formulario</NavLink>
+                  <BackgroundImage image={"/assets/button-maderado-amarillo.png"} className={"bg-cover"}>
+                    <div 
+                      className="flex items-center text-chocolate-brown py-5 px-6 h-10 text-lg font-bold"
+                    >
+                      <NavLink to="/menu" >
+                        Envia tus datos en el formulario
+                      </NavLink>
+                    </div>
+                  </BackgroundImage>
             <span className="absolute right-0 font-ifc-insane-rodeo-bold text-9xl text-white">-</span>
           </div>
         </div>

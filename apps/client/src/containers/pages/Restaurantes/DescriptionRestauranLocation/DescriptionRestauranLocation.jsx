@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { closeDescriptionRestauranLocation } from "../../../../redux/slices/restaurantMapLocationSlice";
 import { EstrellaIcon, PinIcon, WazeIcon } from "../../../../components/Icons";
+import { BackgroundImage } from "../../../../components";
 
 export const DescriptionRestauranLocation = ({ map }) => {
   const dispatch = useDispatch();
@@ -68,18 +69,22 @@ export const DescriptionRestauranLocation = ({ map }) => {
               </h2>
             </div>
             <div className="flex gap-3 flex-col justify-end md:pb-5 px-5">
-              <a className="flex gap-4 px-3 items-center justify-between bg-moss-green text-white md:px-2 md:py-3 py-2 font-bold text-[0.8rem] text-lg">
-                Ir con Google
-                <div className="w-6 fill-light-ivory">
-                  <PinIcon />
-                </div>
-              </a>
-              <a className="flex gap-4 px-3 justify-between items-center bg-moss-green text-lg text-white md:px-2 md:py-3 py-2 font-bold text-[0.8rem]">
-                Ir con Waze
-                <div className="w-7 fill-light-ivory">
-                  <WazeIcon />
-                </div>
-              </a>
+              <BackgroundImage image={"/assets/button-maderado-green.png"} className={"bg-cover"}>
+                <a className="flex gap-2 px-4 items-center justify-between text-white md:py-3 py-2 font-bold text-[16px]">
+                  Ir con Google
+                  <div className="w-6 fill-light-ivory">
+                    <PinIcon />
+                  </div>
+                </a>
+              </BackgroundImage>
+              <BackgroundImage image={"/assets/button-maderado-green.png"} className={"bg-cover"}>
+                <a className="flex gap-4 px-4 justify-between items-center text-[16px] text-white md:py-3 py-2 font-bold">
+                  Ir con Waze
+                  <div className="w-7 fill-light-ivory">
+                    <WazeIcon />
+                  </div>
+                </a>
+              </BackgroundImage>
             </div>
           </div>
 

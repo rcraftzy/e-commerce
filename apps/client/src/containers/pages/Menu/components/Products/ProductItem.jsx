@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { addProductToCart } from "../../../../../redux/slices/menuProductSelectedCartSlice";
 import { useSelector } from "react-redux";
 import { SnackbarUtilities } from "../../../../../utilities";
+import { BackgroundImage } from "../../../../../components";
 
 const NOT_FOUNT_IMAGE_PRODUCT =
   "https://www.hostinet.com/formacion/wp-content/uploads/2017/01/agotado-chincheta.png";
@@ -178,13 +179,14 @@ export const ProductItem = ({ product }) => {
               <h4 className="text-xl">Subtotal:</h4>
               <span className="text-fire-red text-xl">$ 36.400</span>
             </button>
-            <button
-              className="w-3/5 bg-vibrant-yellow text-xl font-bold text-chocolate-brown"
-              onClick={handleAddToCart}
-            >
-              <span>Añadir al carrito</span>
-              <span></span>
-            </button>
+            <BackgroundImage className={"w-3/5 hero-content bg-cover"} image={'/assets/button-maderado-amarillo.png'}>
+              <button
+                className=" text-xl font-bold text-chocolate-brown"
+                onClick={handleAddToCart}
+              >
+                <span>Añadir al carrito</span>
+              </button>
+            </BackgroundImage>
           </footer>
         </div>
       </Modal>

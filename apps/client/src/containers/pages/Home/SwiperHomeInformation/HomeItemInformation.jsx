@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { BackgroundImage } from "../../../../components";
 
 export const HomeItemInformation = () => {
@@ -17,9 +18,15 @@ export const HomeItemInformation = () => {
             </span>
           </div>
           <span className="flex justify-center sm:justify-start z-10 sm:mb-5">
-            <a className="text-chocolate-brown bg-vibrant-yellow px-11 py-3 text-lg font-bold">
-              Consulta aqui
-            </a>
+            <BackgroundImage image={"/assets/button-maderado-amarillo.png"} className={"bg-cover"}>
+              <div 
+                className="flex items-center text-chocolate-brown py-5 px-10 h-10 text-lg font-bold"
+              >
+                <NavLink to="/eventos" >
+                  Consulta aqui
+                </NavLink>
+              </div>
+            </BackgroundImage>
           </span>
         </section>
       </BackgroundImage>

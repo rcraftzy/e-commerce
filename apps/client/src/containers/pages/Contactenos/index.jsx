@@ -97,11 +97,18 @@ export const Contactenos = () => {
                       ></textarea>
                     </div>
                   </div>
-                  <div className='flex justify-center sm:justify-start'>
-                    <button className="text-chocolate-brown bg-vibrant-yellow mt-5 lg:mt-0 mb-5 sm:mb-32 px-11 py-3 text-lg font-bold" type="submit">Enviar Mensaje</button>
+
+                <div className='flex justify-center sm:justify-start'>
+                  <div>
+                    <BackgroundImage image={"/assets/button-maderado-amarillo.png"} className={"bg-cover"}>
+                      <div className="text-chocolate-brown mt-5 lg:mt-0 mb-5 sm:mb-32 px-11 py-3 text-lg font-bold">
+                        <button type="submit">Enviar Mensaje</button>
+                      </div>
+                    </BackgroundImage>
                   </div>
-                </form>
-              </div>
+                </div>
+              </form>
+            </div>
           </div>
         </BackgroundImage>
       </div>

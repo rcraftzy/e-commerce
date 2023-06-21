@@ -1,8 +1,9 @@
 import React from "react";
 import { ButtomMap } from "../Buttom/ButtomMap";
-import { EstrellaIcon } from "../../../../components/Icons";
+import { EstrellaIcon, PinIcon, WazeIcon } from "../../../../components/Icons";
 import { useState } from "react";
 import { useEffect } from "react";
+import { BackgroundImage } from "../../../../components";
 
 const restaurantLocation = [
   {
@@ -92,9 +93,23 @@ export const MovileDescriptionRestaurantLocation = ({ map }) => {
               <span className="block pt-2  text-light-ivory">De domingo a domingo</span>
               <span className="text-[23px] text-light-ivory">11.30 am - 8:30 pm</span>
             </div>
-            <div className="flex flex-col gap-2 pt-2">
-              <ButtomMap title={"Ir con Google"} />
-              <ButtomMap title={"Ir con Google"} />
+            <div className="flex gap-3 flex-col justify-end md:pb-5 px-5">
+              <BackgroundImage image={"/assets/button-maderado-green.png"} className={"bg-cover"}>
+                <a className="flex gap-2 px-4 items-center justify-between text-white md:py-3 py-2 font-bold text-[16px]">
+                  Ir con Google
+                  <div className="w-6 fill-light-ivory">
+                    <PinIcon />
+                  </div>
+                </a>
+              </BackgroundImage>
+              <BackgroundImage image={"/assets/button-maderado-green.png"} className={"bg-cover"}>
+                <a className="flex gap-4 px-4 justify-between items-center text-[16px] text-white md:py-3 py-2 font-bold">
+                  Ir con Waze
+                  <div className="w-7 fill-light-ivory">
+                    <WazeIcon />
+                  </div>
+                </a>
+              </BackgroundImage>
             </div>
           </div>
         </aside>
