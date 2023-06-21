@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Content } from "../Content";
 import { Header } from "../Header";
 import { Button, ButtonBorderGreen, ButtonSearch } from "../buttons";
 import { ProductItem } from "./ProductoItem";
-import { Modal } from "@mui/material";
+import { Checkbox, Modal } from "@mui/material";
 import { ModalDelete } from "../ModalDelete";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
 
 export const Productos = () => {
   const [hideSection, setHideSection] = useState(true);
@@ -92,6 +94,31 @@ export const Productos = () => {
     );
     setOpenDelete(false);
   };
+
+  // ejemplo
+  const [selectedItems, setSelectedItems] = useState([]);
+
+  const handleChange = (event, values) => {
+    const filteredValues = values.filter((value) =>
+      top100Films.some((option) => option.name == value)
+    );
+    console.log(filteredValues);
+    setSelectedItems(values);
+  };
+  const [isMenuOpen, setMenuOpen] = useState(false);
+
+  const handleMenuOpen = () => {
+    setMenuOpen(true);
+  };
+
+  const handleMenuClose = () => {
+    setMenuOpen(false);
+  };
+  const top100Films = [
+    { name: "name1", year: 1994 },
+    { name: "name2", year: 1972 },
+    { name: "name3", year: 1972 },
+  ];
 
   return (
     <section id="productos">
@@ -239,7 +266,64 @@ export const Productos = () => {
                     </label>
                   </section>
                   <section className="w-2/3 flex flex-col gap-4">
-                    <input
+                    <Autocomplete
+                      multiple
+                      disablePortal
+                      id="combo-box-demo"
+                      options={top100Films}
+                      getOptionLabel={(option) => option.name}
+                      onChange={handleChange}
+                      onOpen={handleMenuOpen}
+                      onClose={handleMenuClose}
+                      open={isMenuOpen}
+                      value={selectedItems}
+                      sx={{
+                        width: 300,
+                        "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                          {
+                            outline: "none",
+                          },
+                        "& .Mui-focused .MuiOutlinedInput-notchedOutline": {
+                          border: "1px solid #ccc",
+                        },
+                        "& .MuiInputLabel-root.Mui-focused": {
+                          color: "#000",
+                        },
+                      }}
+                      ListboxProps={{
+                        style: {
+                          maxHeight: "200px",
+                          overflow: "auto",
+                          autoHeight: true,
+                        },
+                      }}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          variant="outlined"
+                          label="Selecciona los elementos"
+                          placeholder="Selecciona los elementos"
+                        />
+                      )}
+                      renderOption={(props, option, state) => (
+                        <div
+                          key={option?.name}
+                          className="flex justify-between items-center"
+                        >
+                          <div className="flex items-center ">
+                            <Checkbox
+                              checked={selectedItems.some(
+                                (item) => item?.name == option?.name
+                              )}
+                              {...props}
+                            />
+                            <span>{option?.name}</span>
+                          </div>
+                          <button>12</button>
+                        </div>
+                      )}
+                    />
+                    {/* <input
                       onChange={(e) => changeItem(e)}
                       value={currentItem?.adicionales}
                       name="adicionales"
@@ -247,7 +331,7 @@ export const Productos = () => {
                       className={`sm:mr-28 lg:mr-0 text-lg sm:text-xl bg-white p-1 pl-6 rounded-3xl text-chocolate-brown`}
                       placeholder="Click aquí*"
                       required
-                    />
+                    /> */}
                     <input
                       onChange={(e) => changeItem(e)}
                       value={currentItem?.acompanamento}

@@ -1,4 +1,4 @@
-.swiper-horizontal > .swiper-scrollbar,
+.swiper-container.swiper-horizontal > .swiper-scrollbar,
 .swiper-scrollbar.swiper-scrollbar-horizontal {
   background-color: #ffffff;
 }
@@ -20,7 +20,7 @@
   filter: grayscale(10%);
 } */
 
-.cluster-icon-map {
+.swiper-container.cluster-icon-map {
   height: 3rem;
   width: 3rem;
   border-radius: 50%;
@@ -37,5 +37,4 @@
 
 .mapIcon {
   background-color: transparent;
-
 }
