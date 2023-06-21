@@ -18,7 +18,7 @@ export const RestauranItemLocation = ({ itemRestaurantLocation, map }) => {
       className="flex flex-col h-full w-full cursor-pointer font-tahoma"
     >
       <div
-        className="mt-[2rem] relative rounded-t-[2rem] bg-intense-orange lg:h-full md:h-[184px] w-full"
+        className="mt-[2rem] relative rounded-t-[2rem] pb-4 bg-intense-orange w-full md:h-48 lg:h-full"
       >
         <div className="flex justify-center pt-5">
           <div className="w-11 fill-light-ivory">
