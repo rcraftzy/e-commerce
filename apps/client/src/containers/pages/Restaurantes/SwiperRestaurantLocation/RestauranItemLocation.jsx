@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { addRestaurantLocation } from "../../../../redux/slices/restaurantMapLocationSlice";
 import { useCallback } from "react";
+import {EstrellaIcon} from '../../../../components/Icons'
 
 export const RestauranItemLocation = ({ itemRestaurantLocation, map }) => {
   const dispatch = useDispatch();
@@ -14,18 +15,21 @@ export const RestauranItemLocation = ({ itemRestaurantLocation, map }) => {
     <button
       onClick={handleDescriptionRestauranLocation}
       type="button"
-      className="flex flex-col w-full h-44  cursor-pointer  font-tahoma"
+      className="flex flex-col h-full w-full cursor-pointer font-tahoma"
     >
-      <div className="mt-[2rem] relative rounded-t-[2rem] bg-intense-orange h-full w-full">
-        <div className=" font-ifc-insane-rodeo-bold text-9xl text-white h-10 absolute   w-full bg-blue-500   -top-10">
-          -
+      <div
+        className="mt-[2rem] relative rounded-t-[2rem] bg-intense-orange lg:h-full md:h-[184px] w-full"
+      >
+        <div className="flex justify-center pt-5">
+          <div className="w-11 fill-light-ivory">
+            <EstrellaIcon />
+          </div>
         </div>
-
-        <div className=" mt-12 px-5 leading-none">
-          <h2 className="text-white font-ifc-insane-rodeo-bold md:text-3xl text-2xl ">
+        <div className="px-4 pt-2">
+          <h2 className="text-light-ivory leading-[25px] font-ifc-insane-rodeo-bold text-4xl">
             {itemRestaurantLocation?.name}
           </h2>
-          <h3 className="text-white text-lg">
+          <h3 className="text-light-ivory pb-5 text-lg leading-[20px] pt-2.5">
             {itemRestaurantLocation?.direction}
           </h3>
         </div>

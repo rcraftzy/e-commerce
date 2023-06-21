@@ -56,40 +56,42 @@ export const MovileDescriptionRestaurantLocation = ({ map }) => {
   }, []);
 
   return (
-    <div className="h-[25rem] bg-moss-green relative z-20 sm:hidden block font-tahoma ">
-      <div className="absolute  -top-16 left-0 right-0 ">
-        <div className="max-w-max mx-auto pb-2 ">
+    <div className="h-[32rem] bg-moss-green relative z-20 sm:hidden block font-tahoma ">
+      <div className="absolute -top-16 left-0 right-0 ">
+        <div className="max-w-[15rem] mx-auto pb-2 ">
           <select
             onChange={(e) => changeRestaurantLocation(e)}
-            className=" border font-bold  text-sm rounded-lg  block w-full p-2.5 bg-fire-red border-gray-600 dark:placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+            className="font-bold text-sm rounded-full block w-full p-2 px-4 bg-fire-red border-gray-600 text-white"
             defaultValue={restaurantLocation?.[0].id}
             value={valueLocation.id}
           >
             {restaurantLocation?.map((location) => (
-              <option key={location?.id} value={location.id}>
+              <option className="max-w-[15rem]" key={location?.id} value={location.id}>
                 {location?.name}
               </option>
             ))}
           </select>
         </div>
         <div className="flex justify-between">
-          <div className="w-10 bg-intense-orange mr-3 rounded-tr-[2rem] "></div>
+          <div className="w-10 bg-intense-orange mr-3 rounded-tr-[2rem]"></div>
           <div className="bg-fire-red text-white flex-1 rounded-t-[2rem] flex flex-col items-center max-h-max py-8">
-            <div className="w-10  ">
+            <div className="w-12 fill-light-ivory ">
               <EstrellaIcon />
             </div>
-            <h1>{valueLocation?.name}</h1>
+            <h1 className="font-ifc-insane-rodeo-bold  text-light-ivory text-4xl">{valueLocation?.name}</h1>
           </div>
           <div className="bg-intense-orange w-10 ml-3 rounded-tl-[2rem]"></div>
         </div>
-        <aside className="text-white bg-fire-red flex flex-col items-center py-4  ">
-          <div className="max-w-max flex flex-col   ">
-            <h1 className="font-ifc-insane-rodeo-bold text-3xl">PALATINO</h1>
-            <h3 className="">
+        <aside className="text-white bg-fire-red flex flex-col items-center py-4">
+          <div className="flex flex-col gap-4">
+            <h1 className="font-ifc-insane-rodeo-bold text-7xl  text-light-ivory">PALATINO</h1>
+            <h3 className="leading-[25px] text-[23px]  text-light-ivory">
               Carrera 7 No. 139 07 <br /> Local 305
             </h3>
-            <span className="pt-2">De domingo a domingo</span>
-            <span>11.30 am - 8:30 pm</span>
+            <div className="leading-[25px] ">
+              <span className="block pt-2  text-light-ivory">De domingo a domingo</span>
+              <span className="text-[23px] text-light-ivory">11.30 am - 8:30 pm</span>
+            </div>
             <div className="flex flex-col gap-2 pt-2">
               <ButtomMap title={"Ir con Google"} />
               <ButtomMap title={"Ir con Google"} />

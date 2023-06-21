@@ -147,7 +147,7 @@ export const Restaurantes = () => {
       {map ? (
         <>
           <div
-            className={`md:h-40  bg-moss-green relative z-20 hidden sm:block ${
+            className={`md:h-52  bg-moss-green relative z-20 hidden sm:block ${
               isActiveDescriptionRestauranLocation ? "h-96" : "h-max"
             }`}
           >
@@ -161,7 +161,7 @@ export const Restaurantes = () => {
               ""
             )}
 
-            <div className="absolute bottom-[2rem] left-0 right-0  ">
+            <div className="absolute bottom-[1rem] left-0 right-0">
               {isActiveDescriptionRestauranLocation && (
                 <DescriptionRestauranLocation map={map} />
               )}
