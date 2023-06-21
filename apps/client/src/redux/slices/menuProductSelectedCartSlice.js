@@ -6,6 +6,7 @@ const menuProductSelectedCartSlice = createSlice({
     cart: [],
     subtotal: 0,
     currentCategory: {},
+    currentPositionSwiper: 0,
   },
   reducers: {
     addProductToCart: (state, action) => {
@@ -62,8 +63,9 @@ const menuProductSelectedCartSlice = createSlice({
       }
     },
     addSelectedCategory: (state, action) => {
-      const { category } = action.payload;
+      const { category, currentPositionSwiper } = action.payload;
       state.currentCategory = category;
+      state.currentPositionSwiper = currentPositionSwiper;
     },
   },
 });

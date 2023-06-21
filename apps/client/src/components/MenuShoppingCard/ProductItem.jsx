@@ -5,6 +5,7 @@ import {
   decrementItem,
   incrementItem,
 } from "../../redux/slices/menuProductSelectedCartSlice";
+import { SnackbarUtilities } from "../../utilities";
 
 export const ProductItem = ({ product }) => {
   const dispatch = useDispatch();
@@ -12,9 +13,13 @@ export const ProductItem = ({ product }) => {
     dispatch(incrementItem({ amount: product?.amount + 1, product }));
   };
   const handleDecrement = () => {
+    if (product?.amount - 1 === 0) {
+      SnackbarUtilities.error("Se ha eliminado el producto");
+    }
     dispatch(decrementItem({ amount: product?.amount - 1, product }));
   };
   const handleRemove = () => {
+    SnackbarUtilities.error("Se ha eliminado el producto");
     dispatch(decrementItem({ amount: 0, product }));
   };
   return (
