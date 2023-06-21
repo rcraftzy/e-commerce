@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { subtotalProduct } from "../../redux/slices/menuProductSelectedCartSlice";
 import { useNavigate } from "react-router-dom";
+import { BackgroundImage } from "../BackgroundImage";
 
 export const MenuShoppingCard = () => {
   const dispatch = useDispatch();
@@ -62,13 +63,15 @@ export const MenuShoppingCard = () => {
                 <span className="font-bold text-moss-green">$ {subtotal}</span>
               </div>
               <div className="flex justify-center">
-                <button
-                  onClick={handlePay}
-                  className="text-chocolate-brown bg-vibrant-yellow px-11 py-4 text-lg font-bold"
-                  type="submit"
-                >
-                  Paga aquí
-                </button>
+                <BackgroundImage className={"bg-cover"} image={"/assets/button-maderado-amarillo.png"}>
+                  <button
+                    onClick={handlePay}
+                    className="text-chocolate-brown px-11 py-4 text-lg font-bold"
+                    type="submit"
+                  >
+                    Paga aquí
+                  </button>
+                </BackgroundImage>
               </div>
               <div className="text-chocolate-brown text-xs">
                 <p className="text-center mx-4">
