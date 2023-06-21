@@ -3,6 +3,7 @@ import { Modal } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { addProductToCart } from "../../../../../redux/slices/menuProductSelectedCartSlice";
 import { useSelector } from "react-redux";
+import { SnackbarUtilities } from "../../../../../utilities";
 
 const NOT_FOUNT_IMAGE_PRODUCT =
   "https://www.hostinet.com/formacion/wp-content/uploads/2017/01/agotado-chincheta.png";
@@ -25,6 +26,8 @@ export const ProductItem = ({ product }) => {
 
   const handleAddToCart = () => {
     if (amountSelected !== 0) {
+      SnackbarUtilities.success("Producto agregado");
+
       dispatch(addProductToCart({ product, amount: amountSelected }));
     }
   };

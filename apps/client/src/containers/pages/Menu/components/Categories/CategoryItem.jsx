@@ -2,10 +2,10 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { addSelectedCategory } from "../../../../../redux/slices/menuProductSelectedCartSlice";
 import { useSelector } from "react-redux";
-export const CategoryItem = ({ category }) => {
+export const CategoryItem = ({ category, index }) => {
   const dispatch = useDispatch();
   const handleSelected = () => {
-    dispatch(addSelectedCategory({ category }));
+    dispatch(addSelectedCategory({ category, currentPositionSwiper: index }));
   };
 
   const { currentCategory } = useSelector(
@@ -16,22 +16,22 @@ export const CategoryItem = ({ category }) => {
     <button
       type="button"
       onClick={handleSelected}
-      className={` w-full ${
+      className={` w-full mt-[5rem] flex flex-col  items-center sm:h-48 h-44 ${
         currentCategory?.id === category.id
-          ? "w-28  border-b-fire-red border-b-8 text-fire-red"
-          : "w-28 pb-3  text-chocolate-brown "
+          ? "  border-b-fire-red border-b-8 text-fire-red"
+          : " pb-3  text-chocolate-brown "
       }`}
     >
       <div
-        className={`h-28 w-full flex justify-center  ${
+        className={`h-28 object-cover w-32 sm:w-full flex justify-center   ${
           currentCategory?.id === category?.id ? "" : " grayscale"
         }`}
       >
-        <img src={category?.img} className="h-full w-full object-cover" />
+        <img src={category?.img} className="h-full w-full " />
       </div>
-      <span className="text-center  text-xl font-bold leading-[0.5px]">
+      <h3 className="text-center  text-xl font-bold leading-none sm:line-clamp-3  line-clamp-1">
         {category?.name}
-      </span>
+      </h3>
     </button>
   );
 };
