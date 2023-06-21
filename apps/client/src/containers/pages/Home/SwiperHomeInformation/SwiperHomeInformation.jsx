@@ -5,7 +5,7 @@ import { BackgroundImage } from "../../../../components";
 import { HomeItemInformation } from "./HomeItemInformation";
 export const SwiperHomeInformation = () => {
   return (
-    <section className="mx-auto max-w-5xl sm:-mb-14 -mb-[4rem]">
+    <section className="mx-auto max-w-5xl sm:-mb-14 -mb-[6rem]">
       <Swiper
         spaceBetween={0}
         centeredSlides={true}
