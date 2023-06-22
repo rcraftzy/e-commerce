@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import * as daisyui from 'daisyui'
+import * as autoprefixer from 'autoprefixer'
 export default {
   content: [
     "./index.html",
@@ -41,6 +42,6 @@ export default {
       },
     }
   },
-  plugins: [daisyui],
+  plugins: [daisyui, autoprefixer],
 }
 
