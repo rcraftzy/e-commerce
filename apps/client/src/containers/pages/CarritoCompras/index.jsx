@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Information } from "./Information/Information";
-import { OrderConfirmation } from "./OrderConfirmation/OrderConfirmation";
-import { DetailCart } from "./DetailCart/DetailCart";
+import { useEffect, useState } from "react";
 import { Footer } from "../../../components";
-import { DetailCartMovile } from "./DetailCartMovile/DetailCartMovile";
-import { DetailFinishOrder } from "./DetailFinishOrder/DetailFinishOrder";
+import { DetailCartMovile, DetailFinishOrder, Information, OrderConfirmation } from "./components";
+import { DetailCart } from "./components/DetailCart";
 
 export const CarritoCompras = () => {
   const [option, setOption] = useState(true);
@@ -82,7 +79,6 @@ export const CarritoCompras = () => {
               )}
             </div>
           )}
-
           <div className="md:flex-1  hidden md:block  sticky top-24 h-min">
             <DetailCart />
           </div>

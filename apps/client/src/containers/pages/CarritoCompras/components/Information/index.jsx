@@ -1,5 +1,3 @@
-import React from "react";
-
 export const Information = ({ setOption }) => {
   const handleOrderConfirmation = () => {
     setOption(false);

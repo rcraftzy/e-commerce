@@ -1,5 +1,3 @@
-import React from "react";
-
 export const DetailCart = () => {
   return (
     <div className="font-tahoma font-bold text-sm text-black mx-4">
