@@ -3,6 +3,7 @@ import { Error404 } from "./containers/errors/Error404.jsx";
 import { FullClientLayout } from "./hocs/layouts/FullClientLayout.jsx";
 import {
   Admin,
+  CarritoCompras,
   Contactenos,
   Eventos,
   Home,
@@ -11,7 +12,6 @@ import {
   Nosotros,
   Restaurantes,
 } from "./containers/pages/";
-import { CarritoCompras } from "./containers/pages/CarritoCompras/index.jsx";
 import ScrollToTop from "./ScrollToTop/index.jsx";
 
 function App() {
