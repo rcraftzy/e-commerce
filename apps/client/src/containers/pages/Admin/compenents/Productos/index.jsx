@@ -128,20 +128,6 @@ export const Productos = () => {
       >
         <ButtonBorderGreen onClick={handleCreate}>Crear</ButtonBorderGreen>
         <ButtonSearch />
-        {/* eliminar */}
-        <ModalDelete
-          openDelete={openDelete}
-          handleDelete={handleDelete}
-          setOpenDelete={setOpenDelete}
-        />
-        {/* crear y actualizar */}
-        <GestionModalProduct
-          currentItem={currentItem}
-          open={open}
-          setCurrentItem={setCurrentItem}
-          setItemsList={setItemsList}
-          setOpen={setOpen}
-        />
       </Header>
       {hideSection && (
         <Content>
@@ -156,6 +142,20 @@ export const Productos = () => {
           ))}
         </Content>
       )}
+      {/* eliminar */}
+      <ModalDelete
+        openDelete={openDelete}
+        handleDelete={handleDelete}
+        setOpenDelete={setOpenDelete}
+      />
+      {/* crear y actualizar */}
+      <GestionModalProduct
+        currentItem={currentItem}
+        open={open}
+        setCurrentItem={setCurrentItem}
+        setItemsList={setItemsList}
+        setOpen={setOpen}
+      />
     </section>
   );
 };
