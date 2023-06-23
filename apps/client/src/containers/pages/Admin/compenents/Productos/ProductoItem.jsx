@@ -37,21 +37,21 @@ export const ProductItem = ({
             </BackgroundImage>
           </div>
           <article className="text-chocolate-brown">
-            <h3 className="text-xl">Hamburguesa Petagonia</h3>
+            <h3 className="text-xl mb-2">{producto?.nombre}</h3>
             <ul className="leading-4">
-              <li>
+              <li className="grid grid-cols-2 w-96">
                 <span className="font-bold">Nombre</span>
                 <span>{producto?.nombre}</span>
               </li>
-              <li>
+              <li className="grid grid-cols-2 w-96">
                 <span className="font-bold">Precio unitario</span>
                 <span>$ {producto.precio}</span>
               </li>
-              <li>
+              <li className="grid grid-cols-2 w-96">
                 <span className="font-bold">Precio combo</span>
                 <span>$ {producto.precioCombo}</span>
               </li>
-              <li>
+              <li className="grid grid-cols-2 w-96">
                 <span className="font-bold">Categoria</span>
                 <span>{producto.categoria}</span>
               </li>

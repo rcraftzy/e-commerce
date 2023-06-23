@@ -29,21 +29,21 @@ export const BannerItem = ({
             />
           </div>
           <article className="text-chocolate-brown">
-            <h3 className="text-xl">Detalles</h3>
+            <h3 className="text-xl mb-2">Detalles</h3>
             <ul className="leading-4">
-              <li>
+              <li className="grid grid-cols-2 w-96">
                 <span className="font-bold">Titulo</span>
                 <span>$ {producto?.titulo}</span>
               </li>
-              <li>
+              <li className="grid grid-cols-2 w-96">
                 <span className="font-bold">Subtitulo</span>
-                <span>$ {producto?.subtitulo}</span>
+                <span className="line-clamp-1">$ {producto?.subtitulo}</span>
               </li>
-              <li>
+              <li className="grid grid-cols-2 w-96">
                 <span className="font-bold">Imagen</span>
                 <span>{producto?.imagen}</span>
               </li>
-              <li>
+              <li className="grid grid-cols-2 w-96">
                 <span className="font-bold">Call to action</span>
                 <span>{producto?.calltoaction}</span>
               </li>

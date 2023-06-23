@@ -32,16 +32,16 @@ export const TicketItem = ({
           </div>
           <article className="text-chocolate-brown">
             <h3 className="text-xl">
-              <strong>Código:</strong>{" "}
+              <strong className="mr-3">Código:</strong>
               <span className="uppercase">{producto?.nombre}</span>
             </h3>
             <ul className="leading-4">
               <li>
-                <span className="font-bold">Categoria</span>
+                <span className="font-bold mr-2">Categoria:</span>
                 <span>{producto.categoria}</span>
               </li>
               <li>
-                <span className="font-bold">Porcentaje descuento</span>
+                <span className="font-bold mr-2">Porcentaje descuento:</span>
                 <span>$ {producto.descuento}</span>
               </li>
             </ul>
