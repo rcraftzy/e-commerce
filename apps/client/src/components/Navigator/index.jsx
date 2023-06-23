@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom"
-import { ChevronDown, ToroIcon } from "../Icons"
+import { ToroIcon } from "../Icons"
+import { DropdownExit } from "./DropdownBubble"
 
 export const Navigator = () => {
   return (
@@ -17,9 +18,7 @@ export const Navigator = () => {
               <div className="fill-light-ivory bg-fire-red rounded-full p-2 w-16">
                 <ToroIcon />
               </div>
-              <div className="stroke-chocolate-brown w-8">
-                <ChevronDown />
-              </div>
+              <DropdownExit />
             </button>
           </div>
         </nav>
