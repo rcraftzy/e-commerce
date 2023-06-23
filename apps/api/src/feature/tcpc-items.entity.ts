@@ -1,13 +1,4 @@
-import {
-  Column,
-  Entity,
-  Index,
-  JoinColumn,
-  PrimaryColumn,
-  ManyToOne,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('tcpc_items', { schema: 'integration' })
 export class TcpcItems {

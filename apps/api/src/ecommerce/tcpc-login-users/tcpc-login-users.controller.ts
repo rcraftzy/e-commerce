@@ -10,7 +10,7 @@ import {
 import { TcpcLoginUsersService } from './tcpc-login-users.service';
 import { LoginUserDto } from './dto/login-user.dto';
 import { AuthGuard } from './auth/auth.guard';
-import { Request, Response } from 'express';
+import { Response } from 'express';
 
 @Controller('tcpc-login-users')
 export class TcpcLoginUsersController {
@@ -30,9 +30,9 @@ export class TcpcLoginUsersController {
   }
   // @Roles(TypesRoles.ADMIN, TypesRoles.USER)
   //@UseGuards(JwtAuthGuard, RolesGuard)
-  @Get('me')
-  async me(@Res({ passthrough: true }) res, @Req() req) {
-    return await this.service.me(res, req);
+  @Get('user')
+  async user(@Res({ passthrough: true }) res, @Req() req) {
+    return await this.service.user(res, req);
   }
 
   @UseGuards(AuthGuard)
