@@ -125,21 +125,21 @@ export const Tickets = () => {
                     <input
                       name="nombre"
                       onChange={(e) => changeItem(e)}
-                      value={currentItem?.nombre}
                       type="text"
                       className={`sm:mr-28 lg:mr-0 text-lg sm:text-xl bg-white p-1 pl-6 rounded-3xl text-chocolate-brown`}
                       placeholder="Click aquí*"
                       required
                     />
-                    <input
+                    <select
                       name="categoria"
-                      value={currentItem?.categoria}
                       onChange={(e) => changeItem(e)}
                       type="text"
                       className={`sm:mr-28 lg:mr-0 text-lg sm:text-xl bg-white p-1 pl-6 rounded-3xl text-chocolate-brown`}
                       placeholder="Click aquí*"
                       required
-                    />
+                    >
+                      <option value={currentItem?.categoria}>{currentItem?.categoria}</option>
+                    </select>
                   </section>
                 </div>
                 <div className="mt-4 flex flex-col gap-4">
@@ -150,15 +150,17 @@ export const Tickets = () => {
                       </label>
                     </div>
                     <div className="flex-1">
-                      <input
-                        value={currentItem?.descuento}
-                        name="descuento"
-                        onChange={(e) => changeItem(e)}
-                        type="text"
-                        className={`sm:mr-28 lg:mr-0 text-lg sm:text-xl bg-white p-1 pl-6 rounded-3xl text-chocolate-brown`}
-                        placeholder="Click aquí*"
-                        required
-                      />
+                      <div htmlFor="flex">
+                        <input
+                          value={currentItem?.descuento}
+                          name="descuento"
+                          onChange={(e) => changeItem(e)}
+                          type="text"
+                          className={`sm:mr-28 lg:mr-0 text-lg sm:text-xl bg-white p-1 pl-6 rounded-3xl text-chocolate-brown`}
+                          placeholder="Click aquí*"
+                          required
+                        />
+                      </div>
                     </div>
                   </section>
                 </div>

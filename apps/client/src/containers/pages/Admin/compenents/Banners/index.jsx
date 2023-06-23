@@ -167,9 +167,9 @@ export const Banners = () => {
                   <section className="flex gap-4">
                     <div className="flex-1">
                       <input
-                        type="text"
+                        type="file"
+                        accept="image/*"
                         className={`w-full sm:mr-28 lg:mr-0 text-lg sm:text-xl bg-white p-1 pl-6 rounded-3xl text-chocolate-brown`}
-                        placeholder="Click aquí*"
                         required
                       />
                     </div>

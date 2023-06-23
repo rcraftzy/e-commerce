@@ -70,7 +70,7 @@ export const GestionModalProduct = ({
               <section className="flex gap-8">
                 <div className="flex">
                   <label className="text-chocolate-brown text-xl font-bold">
-                    Nombre producto*
+                    Nombre producto<span className="text-fire-red">*</span>
                   </label>
                 </div>
                 <div className="flex-1">
@@ -87,7 +87,7 @@ export const GestionModalProduct = ({
               </section>
               <section className="grid grid-cols-4 gap-4 py-4">
                 <label className="text-chocolate-brown text-xl font-bold">
-                  Precio unidad*
+                  Precio unidad<span className="text-fire-red">*</span>
                 </label>
                 <input
                   type="text"
@@ -99,19 +99,18 @@ export const GestionModalProduct = ({
                   required
                 />
                 <label className="text-chocolate-brown text-xl font-bold">
-                  Entrega*
+                  Entrega<span className="text-fire-red">*</span>
                 </label>
-                <input
-                  onChange={(e) => changeItem(e)}
-                  value={currentItem?.entrega}
-                  name="entrega"
-                  type="text"
+                <select
                   className={`w-full sm:mr-28 lg:mr-0 text-lg sm:text-xl bg-white p-1 pl-6 rounded-3xl text-chocolate-brown`}
                   placeholder="Click aquí*"
                   required
-                />
+                >
+                  <option value="">Selecciona</option>
+                  <option value={currentItem?.entrega}>Domicilio</option>
+                </select>
                 <label className="text-chocolate-brown text-xl font-bold">
-                  Precio combo*
+                  Precio combo<span className="text-fire-red">*</span>
                 </label>
                 <input
                   type="text"
@@ -123,22 +122,21 @@ export const GestionModalProduct = ({
                   required
                 />
                 <label className="text-chocolate-brown text-xl font-bold">
-                  Categoria*
+                  Categoria<span className="text-fire-red">*</span>
                 </label>
-                <input
+                <select
                   onChange={(e) => changeItem(e)}
-                  value={currentItem?.categoria}
-                  name="categoria"
-                  type="text"
                   className={`w-full sm:mr-28 lg:mr-0 text-lg sm:text-xl bg-white p-1 pl-6 rounded-3xl text-chocolate-brown`}
-                  placeholder="Click aquí*"
                   required
-                />
+                >
+                  <option value="selecciona">Selecciona</option>
+                  <option value={currentItem?.categoria}>Hamburguesas</option>
+                </select>
               </section>
               <section className="flex gap-8">
                 <div className="flex">
                   <label className="text-chocolate-brown text-xl font-bold">
-                    Ingredientes
+                    Ingredientes<span className="text-fire-red">*</span>
                   </label>
                 </div>
                 <div className="flex-1">
@@ -151,7 +149,7 @@ export const GestionModalProduct = ({
               </section>
               <div className="mb-4 flex flex-col gap-4">
                 <label className="text-chocolate-brown text-xl font-bold">
-                  Elige la imagen del banner que deseas subir*
+                  Elige la imagen del banner que deseas subir<span className="text-fire-red">*</span>
                 </label>
                 <section className="flex gap-4">
                   <div className="flex-1">
@@ -159,9 +157,9 @@ export const GestionModalProduct = ({
                       onChange={(e) => changeItem(e)}
                       value={currentItem?.imagen}
                       name="imagen"
-                      type="text"
+                      accept="image/*"
+                      type="file"
                       className={`w-full sm:mr-28 lg:mr-0 text-lg sm:text-xl bg-white p-1 pl-6 rounded-3xl text-chocolate-brown`}
-                      placeholder="Click aquí*"
                       required
                     />
                   </div>
@@ -173,13 +171,13 @@ export const GestionModalProduct = ({
               <div className="flex gap-5">
                 <section className="flex flex-col gap-6 w-1/3">
                   <label className="text-chocolate-brown text-xl font-bold">
-                    Adicionales*
+                    Adicionales
                   </label>
                   <label className="text-chocolate-brown text-xl font-bold">
-                    Acompañamiento*
+                    Acompañamiento
                   </label>
                   <label className="text-chocolate-brown text-xl font-bold">
-                    Bebidas*
+                    Bebidas
                   </label>
                 </section>
                 <section className="w-2/3 flex flex-col gap-4">
@@ -187,21 +185,21 @@ export const GestionModalProduct = ({
 
                   <button
                     type="button"
-                    className="bg-red-500"
+                    className={`sm:mr-28 lg:mr-0 text-lg bg-white border-2 border-moss-green p-1 pl-6 rounded-3xl text-moss-green font-bold`}
                     onClick={() => setOpenAccompanimet(true)}
                   >
-                    Acompañamiento
+                    Añadir acompañamiento
                   </button>
 
-                  <input
+                  <select
                     onChange={(e) => changeItem(e)}
-                    value={currentItem?.bebidad}
-                    name="bebidad"
-                    type="text"
                     className={`sm:mr-28 lg:mr-0 text-lg sm:text-xl bg-white p-1 pl-6 rounded-3xl text-chocolate-brown`}
-                    placeholder="Click aquí*"
                     required
-                  />
+                  >
+                    <option value="">Selecciona Elementos</option>
+                    <option value={currentItem?.bebidad}>Coca Cola</option>
+                    <option value={currentItem?.bebidad}>Cola Pepsi</option>
+                  </select>
                 </section>
               </div>
               <footer className="flex justify-center gap-4 mt-5">
