@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Footer } from "../../../components";
+import { Footer, ShoppingBag } from "../../../components";
 import { DetailCartMovile, DetailFinishOrder, Information, OrderConfirmation } from "./components";
 import { DetailCart } from "./components/DetailCart";
 
@@ -16,26 +16,31 @@ export const CarritoCompras = () => {
   };
   return (
     <div className="">
-      <header className=" fixed w-full bg-white   flex justify-center  border-b-8 border-golden-yellow  h-24 z-40">
+      <header className="fixed w-full bg-light-ivory flex justify-center  border-b-8 border-golden-yellow  h-24 z-40">
         <img
           className="w-40 sm:w-60 h-full  object-cover scale-75 "
           src="/assets/LOGO-PW.png"
           alt="Logo"
         />
         <div
-          className={`md:hidden block absolute right-0 top-32   text-black   rounded-lg bg-white font-tahoma font-bold text-sm ${
-            activeDetailMovile ? "sm:w-96 w-full" : "w-40"
+          className={`md:hidden block absolute right-0 top-32 text-black font-bold text-sm ${
+            activeDetailMovile ? "sm:w-96 w-full" : ""
           } `}
         >
-          <div>
-            <button
-              type="button"
-              onClick={handleDetailCartMovile}
-              className="bg-moss-green w-full h-12 "
-            >
-              <h2 className="text-white">Tu pedido final</h2>
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={handleDetailCartMovile}
+            className="bg-moss-green w-full rounded-l-2xl"
+          >
+            <div className="w-24 mr-7 sm:mr-20 pl-6 flex justify-center py-2 flex-col">
+              <div className="mx-auto">
+                <div className="w-8 fill-light-ivory">
+                  <ShoppingBag />
+                </div>
+              </div>
+              <h2 className="text-light-ivory">Tu pedido final</h2>
+            </div>
+          </button>
 
           {activeDetailMovile && (
             <div>
@@ -57,18 +62,17 @@ export const CarritoCompras = () => {
               <DetailFinishOrder />
             </div>
           ) : (
-            <div className="flex-1 bg-fire-red px-4 py-5 text-white ">
-              <h1 className="font-ifc-insane-rodeo-bold text-3xl">
+            <div className="flex-1 bg-fire-red px-4 py-5 text-light-ivory">
+              <h1 className="font-ifc-insane-rodeo-bold leading-8 pt-12 px-4 md:px-16 text-[34px]">
                 Hamburguesas del Rodeo
               </h1>
-              <div className="flex gap-2 mb-5 font-tahoma text-sm">
+              <div className="flex gap-2 mb-5 font-tahoma px-4 md:px-16 text-sm">
                 <h3 className={`${option ? "font-bold" : ""}`}>Información</h3>
                 <span> &gt; </span>
                 <h3 className={`${option ? "" : "font-bold"}`}>
                   Confirmación del pedido
                 </h3>
               </div>
-
               {option ? (
                 <Information setOption={setOption} />
               ) : (
