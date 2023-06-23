@@ -1,20 +1,8 @@
 import { SnackbarProvider } from "notistack";
 import { Categories, Products } from "./components";
 import { SnackbarUtilitiesConfigurator } from "../../../utilities";
-import { useEffect, useState } from "react";
-import { testingService } from "../../../services/testing.service";
 
 export const Menu = () => {
-  const [morty, setMorty] = useState({});
-  const fetchMorty = async () => {
-    const { data } = await testingService();
-    setMorty(data);
-  };
-
-  useEffect(() => {
-    fetchMorty();
-  }, []);
-
   return (
     <>
       <SnackbarProvider>

@@ -62,26 +62,34 @@ export class TcpcLoginUsersService {
     }
   }
 
-  async me(res: Response, req: Request) {
-    const token = req.cookies['token'];
-    const decodedJwtAccessToken = this.jwtService.decode(token);
-    if (decodedJwtAccessToken === null) {
-      res.clearCookie('token');
+  async user(res: Response, req: Request) {
+    try {
+      const token = req.cookies['token'];
+      const decodedJwtAccessToken = this.jwtService.decode(token);
+      if (decodedJwtAccessToken === null) {
+        res.clearCookie('token');
+        return {
+          statusCode: HttpStatus.UNAUTHORIZED,
+          message: 'Usuario no existe',
+        };
+      }
+
+      const data = await this.usersRepository.findOneBy({
+        userId: decodedJwtAccessToken.sub,
+      });
+
       return {
-        statusCode: HttpStatus.UNAUTHORIZED,
-        message: 'Usuario no existe',
+        statusCode: HttpStatus.OK,
+        message: 'Usuario logeado con exito',
+        data: data,
+        token,
+      };
+    } catch (error) {
+      return {
+        statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+        message: error?.response?.message,
       };
     }
-    const data = await this.usersRepository.findOneBy(
-      decodedJwtAccessToken.sub,
-    );
-
-    return {
-      statusCode: HttpStatus.OK,
-      message: 'Usuario logeado con exito',
-      user: data,
-      token,
-    };
   }
 
   async signout(req: Request, res: Response) {
