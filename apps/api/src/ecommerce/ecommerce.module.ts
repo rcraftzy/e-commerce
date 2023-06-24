@@ -1,7 +1,5 @@
 import { Module } from '@nestjs/common';
 
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { TcprTrazasdia } from 'src/feature/tcpr-trazasdia.entity';
 import { TcpcItemsModule } from './tcpc-items/tcpc-items.module';
 import { TcpcLoginUsersModule } from './tcpc-login-users/tcpc-login-users.module';
 import { TcprClientModule } from './tcpr-client/tcpr-client.module';
@@ -12,6 +10,9 @@ import { TcprOrderGeneralModule } from './tcpr-order-general/tcpr-order-general.
 import { TcprOrderTypePaymentModule } from './tcpr-order-type-payment/tcpr-order-type-payment.module';
 import { TcprTrazasModule } from './tcpr-trazas/tcpr-trazas.module';
 import { TcprTrazasdiaModule } from './tcpr-trazasdia/tcpr-trazasdia.module';
+import { TcpcItemsCategoriesModule } from './tcpc-items-categories/tcpc-items-categories.module';
+import { TcpcBrandModule } from './tcpc-brand/tcpc-brand.module';
+import { TcpcPointSaleModule } from './tcpc-point-sale/tcpc-point-sale.module';
 @Module({
   imports: [
     TcpcItemsModule,
@@ -24,6 +25,9 @@ import { TcprTrazasdiaModule } from './tcpr-trazasdia/tcpr-trazasdia.module';
     TcprOrderTypePaymentModule,
     TcprTrazasModule,
     TcprTrazasdiaModule,
+    TcpcItemsCategoriesModule,
+    TcpcBrandModule,
+    TcpcPointSaleModule,
   ],
 })
 export class EcommerceModule {}

@@ -1,4 +1,13 @@
-import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryColumn,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { TcpcBrand } from './tcpc-brand.entity';
+import { TcpcItemsCategories } from './tcpc-items-categories';
 
 @Entity('tcpc_items', { schema: 'integration' })
 export class TcpcItems {
@@ -14,10 +23,12 @@ export class TcpcItems {
   @Column('text', { name: 'descripcion' })
   description: string;
 
-  @PrimaryColumn('int', { name: 'idCategoria' })
+  @ManyToOne(() => TcpcItemsCategories, { eager: true })
+  @JoinColumn({ name: 'idCategoria', referencedColumnName: 'categoryId' })
   categoryId: number;
 
-  @PrimaryColumn('bigint', { name: 'idMarca' })
+  @ManyToOne(() => TcpcBrand, { eager: true })
+  @JoinColumn({ name: 'idMarca', referencedColumnName: 'brandId' })
   brandId: number;
 
   @Column('double', { name: 'impuesto' })

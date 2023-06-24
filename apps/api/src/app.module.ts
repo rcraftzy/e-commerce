@@ -15,6 +15,9 @@ import { TcprOrderGeneralManual } from './feature/tcpr-order-general-manual.enti
 import { TcprClient } from './feature/tcpr-client.entity';
 import { TcprOrderDetail } from './feature/tcpr-order-detail.entity';
 import { EcommerceModule } from './ecommerce/ecommerce.module';
+import { TcpcItemsCategories } from './feature/tcpc-items-categories';
+import { TcprPointSale } from './feature/tcpr-point-sale.entity';
+import { TcpcBrand } from './feature/tcpc-brand.entity';
 
 @Module({
   imports: [
@@ -36,6 +39,9 @@ import { EcommerceModule } from './ecommerce/ecommerce.module';
         TcprOrderTypePayment,
         TcprTrazas,
         TcprTrazasdia,
+        TcpcItemsCategories,
+        TcpcBrand,
+        TcprPointSale,
       ],
       synchronize: false,
       autoLoadEntities: true,
