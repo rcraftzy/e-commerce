@@ -7,22 +7,22 @@ import { RestauranItemLocation } from "./RestauranItemLocation";
 export const SwiperRestaurantLocation = ({ map }) => {
   const restaurantLocation = [
     {
-      geocode: [-2.7407747, -78.8494491],
+      geocode: [4.7155912, -74.0290976],
       name: "Patalino",
       direction: "CARRERA 7 No. 139 07 Local 305",
     },
     {
-      geocode: [-2.7446874, -78.8483158],
-      name: "Centro",
-      direction: "CARRERA 7 No. 13 47",
+      geocode: [4.6176034, -74.1361687],
+      name: "Americas",
+      direction: "Calle 8 Sur #71b-65 a 71b-1",
     },
     {
-      geocode: [-2.7419321, -78.8476359],
+      geocode: [4.683463000000001, -74.059772],
       name: "Castellana",
       direction: "CRA 47 No. 94 A 56",
     },
     {
-      geocode: [-2.7407747, -78.8494491],
+      geocode: [4.711103, -74.1125518],
       name: "C.C Portal 80",
       direction: "Calle 80 #100 - 52 Local 3044",
     },

@@ -12,7 +12,7 @@ export const DescriptionRestauranLocation = ({ map }) => {
   );
   const handleClose = () => {
     dispatch(closeDescriptionRestauranLocation());
-    map.setView([-2.7404828, -78.8507159], 15);
+    map.setView([4.7155912, -74.0290976], 11);
   };
   return (
     <div className=" max-w-md md:max-w-4xl z-50 mx-auto relative bg-intense-orange">
@@ -62,23 +62,35 @@ export const DescriptionRestauranLocation = ({ map }) => {
                 {currentRestaurantLocation?.direction}
               </h2>
               <h2 className="text-white leading-4 text-lg">
-                <span className="block text-sm">
-                  De domingo a domingo 
-                </span>
+                <span className="block text-sm">De domingo a domingo</span>
                 11:30 am - 8:30 pm
               </h2>
             </div>
             <div className="flex gap-3 flex-col justify-end md:pb-5 px-5">
-              <BackgroundImage image={"/assets/button-maderado-green.png"} className={"bg-cover"}>
-                <a target="_blank" href={`https://maps.google.com/?q=${currentRestaurantLocation?.geocode[0]},${currentRestaurantLocation?.geocode[1]}`} className="flex gap-2 px-4 items-center justify-between text-white md:py-3 py-2 font-bold text-[16px]">
+              <BackgroundImage
+                image={"/assets/button-maderado-green.png"}
+                className={"bg-cover"}
+              >
+                <a
+                  target="_blank"
+                  href={`https://maps.google.com/?q=${currentRestaurantLocation?.geocode[0]},${currentRestaurantLocation?.geocode[1]}`}
+                  className="flex gap-2 px-4 items-center justify-between text-white md:py-3 py-2 font-bold text-[16px]"
+                >
                   Ir con Google
                   <div className="w-6 fill-light-ivory">
                     <PinIcon />
                   </div>
                 </a>
               </BackgroundImage>
-              <BackgroundImage image={"/assets/button-maderado-green.png"} className={"bg-cover"}>
-                <a target="_blank" href={`https://www.waze.com/ul?ll=${currentRestaurantLocation.geocode[0]},${currentRestaurantLocation.geocode[1]}&navigate=yes&zoom=17`} className="flex gap-4 px-4 justify-between items-center text-[16px] text-white md:py-3 py-2 font-bold">
+              <BackgroundImage
+                image={"/assets/button-maderado-green.png"}
+                className={"bg-cover"}
+              >
+                <a
+                  target="_blank"
+                  href={`https://www.waze.com/ul?ll=${currentRestaurantLocation.geocode[0]},${currentRestaurantLocation.geocode[1]}&navigate=yes&zoom=17`}
+                  className="flex gap-4 px-4 justify-between items-center text-[16px] text-white md:py-3 py-2 font-bold"
+                >
                   Ir con Waze
                   <div className="w-7 fill-light-ivory">
                     <WazeIcon />

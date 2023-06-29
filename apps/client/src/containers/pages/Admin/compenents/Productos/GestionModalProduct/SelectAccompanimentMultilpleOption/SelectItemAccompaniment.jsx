@@ -5,7 +5,6 @@ export const SelectItemAccompaniment = ({
   product,
   productsList,
   setProductList,
-
   selectedProducts,
   setSelectedProducts,
 }) => {
@@ -16,7 +15,6 @@ export const SelectItemAccompaniment = ({
     // setAmount(amount - 1);
   };
   const handleRemove = () => {
-    console.log(product?.dItemSeleccion);
     setProductList([...productsList, product?.idItemSeleccion]);
     setSelectedProducts(
       selectedProducts?.filter((item) => item?.id !== product?.id)

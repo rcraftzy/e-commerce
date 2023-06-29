@@ -32,16 +32,20 @@ const iconMap = `<svg version="1.1" x="0" y="0" viewBox="0 0 38.45 58.3 ">
 </svg>`;
 const markers = [
   {
-    geocode: [-2.7407747, -78.8494491],
-    popUp: "Emilio Abad",
+    geocode: [4.7155912, -74.0290976],
+    name: "Patalino",
   },
   {
-    geocode: [-2.7446874, -78.8483158],
-    popUp: "Hotel",
+    geocode: [4.6176034, -74.1361687],
+    name: "Americas",
   },
   {
-    geocode: [-2.7419321, -78.8476359],
-    popUp: "cafe",
+    geocode: [4.683463000000001, -74.059772],
+    name: "Castellana",
+  },
+  {
+    geocode: [4.711103, -74.1125518],
+    name: "C.C Portal 80",
   },
 ];
 
@@ -86,6 +90,11 @@ export const Restaurantes = () => {
     });
   };
 
+  useEffect(() => {
+    // calcular el punto mas cercano
+    findNearestPoint();
+  }, []);
+
   const findNearestPoint = () => {
     if (currentPosition) {
       const nearestPoint = markers.reduce(
@@ -112,8 +121,8 @@ export const Restaurantes = () => {
     () => (
       <div className="mx-auto max-w-5xl  z-[10] relative">
         <MapContainer
-          center={[-2.7404828, -78.8507159]}
-          zoom={15}
+          center={[4.7155912, -74.0290976]}
+          zoom={11}
           ref={setMap}
           bounceAtZoomLimits={true}
           className="h-[26rem] w-full pt-20"
@@ -130,7 +139,7 @@ export const Restaurantes = () => {
             {markers.map((markers, index) => (
               <Marker icon={customIcon} key={index} position={markers.geocode}>
                 <Popup>
-                  <h2>{markers.popUp}</h2>
+                  <h2>{markers?.name}</h2>
                 </Popup>
               </Marker>
             ))}
@@ -171,15 +180,6 @@ export const Restaurantes = () => {
           <MovileDescriptionRestaurantLocation map={map} />
         </>
       ) : null}
-
-      {/* <h1>posicion actual {JSON.stringify(currentPosition)}</h1>
-      <button
-        type="button"
-        className="bg-blue-500 text-white py-2 px-2  rounded-lg"
-        onClick={findNearestPoint}
-      >
-        La ruta mas cercana es
-      </button> */}
     </>
   );
 };

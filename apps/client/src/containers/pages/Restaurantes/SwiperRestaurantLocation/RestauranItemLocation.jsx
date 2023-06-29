@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { addRestaurantLocation } from "../../../../redux/slices/restaurantMapLocationSlice";
 import { useCallback } from "react";
-import {EstrellaIcon} from '../../../../components/Icons'
+import { EstrellaIcon } from "../../../../components/Icons";
 
 export const RestauranItemLocation = ({ itemRestaurantLocation, map }) => {
   const dispatch = useDispatch();
@@ -17,9 +17,7 @@ export const RestauranItemLocation = ({ itemRestaurantLocation, map }) => {
       type="button"
       className="flex flex-col h-full w-full cursor-pointer font-tahoma"
     >
-      <div
-        className="mt-[2rem] relative rounded-t-[2rem] pb-4 bg-intense-orange w-full md:h-48 lg:h-full"
-      >
+      <div className="mt-[2rem] relative rounded-t-[2rem] pb-4 bg-intense-orange w-full md:h-48 lg:h-full">
         <div className="flex justify-center pt-5">
           <div className="w-11 fill-light-ivory">
             <EstrellaIcon />
