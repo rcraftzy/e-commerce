@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  ShoppingBag,
-} from "../Icons";
+import { ShoppingBag } from "../Icons";
 import { Modal } from "@mui/material";
 import { ProductItem } from "./ProductItem";
 import { useSelector } from "react-redux";
@@ -35,8 +33,8 @@ export const MenuShoppingCard = () => {
         onClick={handleOpen}
         className="flex flex-col justify-center px-7 gap-0"
       >
-        <div className="flex justify-center">
-          <div className="w-11 pt-1 text-center h-auto fill-white">
+        <div className="flex justify-center  w-full">
+          <div className="w-11 pt-1 text-center h-auto fill-white ">
             <ShoppingBag />
           </div>
         </div>
@@ -63,7 +61,10 @@ export const MenuShoppingCard = () => {
                 <span className="font-bold text-moss-green">$ {subtotal}</span>
               </div>
               <div className="flex justify-center">
-                <BackgroundImage className={"bg-cover"} image={"/assets/button-maderado-amarillo.png"}>
+                <BackgroundImage
+                  className={"bg-cover"}
+                  image={"/assets/button-maderado-amarillo.png"}
+                >
                   <button
                     onClick={handlePay}
                     className="text-chocolate-brown px-11 py-4 text-lg font-bold"
