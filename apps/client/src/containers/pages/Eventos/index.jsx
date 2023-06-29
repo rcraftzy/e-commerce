@@ -4,6 +4,7 @@ import { Modal } from "@mui/material";
 import { useState } from "react";
 import { SwiperNavButton } from "../../../components/SwiperNavButton";
 import { EstrellaIcon } from "../../../components/Icons/EstrellaIcon";
+import styles from './styles.module.css'
 
 export const Eventos = () => {
   return (
@@ -48,16 +49,27 @@ export const Eventos = () => {
         </div>
       </section>
       <section className="relative max-w-5xl mx-auto">
-        <div className="max-w-3xl mx-auto mb-10">
+        <div className="max-w-4xl mx-auto mb-10">
           <Swiper
             slidesPerView={3}
             spaceBetween={30}
+            breakpoints={{
+              340: {
+                slidesPerView: 1,
+              },
+              640: {
+                slidesPerView: 2,
+              },
+              768: {
+                slidesPerView: 3,
+              },
+            }}
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
             }}
             modules={[Autoplay, Navigation]}
-            className="mySwiper"
+            className={`${styles['swiper_content']}`}
           >
             <SwiperSlide style={{ background: "transparent" }}>
               <ItemSwiper
@@ -96,37 +108,38 @@ const ItemSwiper = ({ title, subtitle, img, secondSubtitle }) => {
   const twoSubtitle = !secondSubtitle ? "" : "top-11";
   return (
     <>
-      <div className="h-96 mt-[2rem]">
-        <div className="h-3/4">
-          <img
-            className="h-full rounded-t-[40px]"
-            src={`/assets/eventos/${img}`}
-            alt="foto"
-          />
+      <div className="bg-white rounded-t-full">
+        <div className="h-96 mt-[2rem]">
+          <div className="h-3/4">
+            <img
+              className="h-full rounded-t-[40px]"
+              src={`/assets/eventos/${img}`}
+              alt="foto"
+            />
+          </div>
+          <div className="relative h-1/4 border-t-8 border-intense-orange flex flex-col items-center text-center">
+            <span className="absolute z-10 text-chocolate-brown font-ifc-insane-rodeo-bold text-5xl">
+              {title}
+            </span>
+            <span
+              className={`absolute top-3 inset-x-0 text-chocolate-brown font-ifc-insane-rodeo-bold text-4xl`}
+            >
+              {secondSubtitle}
+            </span>
+            <span
+              className={`absolute ${onlyTitleClass} ${twoSubtitle} inset-x-0 text-chocolate-brown font-ifc-insane-rodeo-bold text-4xl`}
+            >
+              {subtitle}
+            </span>
+          </div>
         </div>
-        <div className="relative h-1/4 border-t-8 border-intense-orange flex flex-col items-center text-center">
-          <span className="absolute z-10 text-chocolate-brown font-ifc-insane-rodeo-bold text-5xl">
-            {title}
-          </span>
-          <span
-            className={`absolute top-3 inset-x-0 text-chocolate-brown bg-white font-ifc-insane-rodeo-bold text-4xl`}
-          >
-            {secondSubtitle}
-          </span>
-          <span
-            className={`absolute ${onlyTitleClass} ${twoSubtitle} inset-x-0 text-chocolate-brown bg-white font-ifc-insane-rodeo-bold text-4xl`}
-          >
-            {subtitle}
-          </span>
-        </div>
+        <button
+          onClick={handleOpen}
+          className="mb-4 bg-intense-orange rounded-box text-white font-bold px-8 py-1"
+        >
+          Más información
+        </button>
       </div>
-      <button
-        onClick={handleOpen}
-        className="mb-4 bg-intense-orange rounded-box text-white font-bold px-8 py-1"
-      >
-        Más información
-      </button>
-
       <Modal
         open={open}
         onClose={handleClose}
