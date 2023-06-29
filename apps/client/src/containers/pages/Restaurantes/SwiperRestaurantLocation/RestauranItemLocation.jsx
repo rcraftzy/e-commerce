@@ -26,7 +26,7 @@ export const RestauranItemLocation = ({ itemRestaurantLocation, map }) => {
           </div>
         </div>
         <div className="px-4 pt-2">
-          <h2 className="text-light-ivory line-clamp-2 leading-[25px] font-ifc-insane-rodeo-bold text-4xl">
+          <h2 className="text-light-ivory line-clamp-1 leading-[25px] font-ifc-insane-rodeo-bold text-4xl">
             {itemRestaurantLocation?.name}
           </h2>
           <h3 className="text-light-ivory line-clamp-1 pb-5 text-lg leading-[20px] pt-2.5">

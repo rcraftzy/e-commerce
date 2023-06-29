@@ -8,33 +8,23 @@ export const SwiperRestaurantLocation = ({ map }) => {
   const restaurantLocation = [
     {
       geocode: [-2.7407747, -78.8494491],
-      name: "Emilio Abad",
-      direction: "CARRERA D.D No. 139 07 Local 305",
+      name: "Patalino",
+      direction: "CARRERA 7 No. 139 07 Local 305",
     },
     {
       geocode: [-2.7446874, -78.8483158],
-      name: "Hotel",
-      direction: "CARRERA D.D No. 139 07 Local 305 ",
+      name: "Centro",
+      direction: "CARRERA 7 No. 13 47",
     },
     {
       geocode: [-2.7419321, -78.8476359],
-      name: "cafe",
-      direction: "CARRERA D.D No. 139 07 Local 305 ",
+      name: "Castellana",
+      direction: "CRA 47 No. 94 A 56",
     },
     {
       geocode: [-2.7407747, -78.8494491],
-      name: "Emilio Abad",
-      direction: "CARRERA D.D No. 139 07 Local 305 ",
-    },
-    {
-      geocode: [-2.7446874, -78.8483158],
-      name: "Hotel",
-      direction: "CARRERA D.D No. 139 07 Local 305 ",
-    },
-    {
-      geocode: [-2.7419321, -78.8476359],
-      name: "cafe",
-      direction: "CARRERA D.D No. 139 07 Local 305 ",
+      name: "C.C Portal 80",
+      direction: "Calle 80 #100 - 52 Local 3044",
     },
   ];
   return (

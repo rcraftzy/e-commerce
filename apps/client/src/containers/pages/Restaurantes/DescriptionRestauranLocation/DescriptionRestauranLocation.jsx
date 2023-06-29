@@ -70,7 +70,7 @@ export const DescriptionRestauranLocation = ({ map }) => {
             </div>
             <div className="flex gap-3 flex-col justify-end md:pb-5 px-5">
               <BackgroundImage image={"/assets/button-maderado-green.png"} className={"bg-cover"}>
-                <a className="flex gap-2 px-4 items-center justify-between text-white md:py-3 py-2 font-bold text-[16px]">
+                <a target="_blank" href={`https://maps.google.com/?q=${currentRestaurantLocation?.geocode[0]},${currentRestaurantLocation?.geocode[1]}`} className="flex gap-2 px-4 items-center justify-between text-white md:py-3 py-2 font-bold text-[16px]">
                   Ir con Google
                   <div className="w-6 fill-light-ivory">
                     <PinIcon />
@@ -78,7 +78,7 @@ export const DescriptionRestauranLocation = ({ map }) => {
                 </a>
               </BackgroundImage>
               <BackgroundImage image={"/assets/button-maderado-green.png"} className={"bg-cover"}>
-                <a className="flex gap-4 px-4 justify-between items-center text-[16px] text-white md:py-3 py-2 font-bold">
+                <a target="_blank" href={`https://www.waze.com/ul?ll=${currentRestaurantLocation.geocode[0]},${currentRestaurantLocation.geocode[1]}&navigate=yes&zoom=17`} className="flex gap-4 px-4 justify-between items-center text-[16px] text-white md:py-3 py-2 font-bold">
                   Ir con Waze
                   <div className="w-7 fill-light-ivory">
                     <WazeIcon />

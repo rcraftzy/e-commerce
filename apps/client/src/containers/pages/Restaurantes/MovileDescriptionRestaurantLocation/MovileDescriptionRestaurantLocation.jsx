@@ -9,40 +9,28 @@ const restaurantLocation = [
   {
     id: 1,
     geocode: [-2.7407747, -78.8494491],
-    name: "Emilio Abad",
-    direction: "CARRERA D.D No. 139 07 Local 305 ",
+    name: "Patalino",
+    direction: "CARRERA 7 No. 139 07 Local 305",
   },
   {
     id: 2,
     geocode: [-2.7446874, -78.8483158],
-    name: "Hotel",
-    direction: "CARRERA D.D No. 139 07 Local 305 ",
+    name: "Centro",
+    direction: "CARRERA 7 No. 13 47",
   },
   {
     id: 3,
     geocode: [-2.7419321, -78.8476359],
-    name: "cafe",
-    direction: "CARRERA D.D No. 139 07 Local 305 ",
+    name: "Castellana",
+    direction: "CRA 47 No. 94 A 56",
   },
   {
     id: 4,
     geocode: [-2.7407747, -78.8494491],
-    name: "Emilio Abad",
-    direction: "CARRERA D.D No. 139 07 Local 305 ",
+    name: "C.C Portal 80",
+    direction: "Calle 80 #100 - 52 Local 3044",
   },
-  {
-    id: 5,
-    geocode: [-2.7446874, -78.8483158],
-    name: "Hotel",
-    direction: "CARRERA D.D No. 139 07 Local 305 ",
-  },
-  {
-    id: 6,
-    geocode: [-2.7419321, -78.8476359],
-    name: "cafe",
-    direction: "CARRERA D.D No. 139 07 Local 305 ",
-  },
-];
+] 
 
 export const MovileDescriptionRestaurantLocation = ({ map }) => {
   const [valueLocation, setValueLocation] = useState({});
@@ -85,11 +73,11 @@ export const MovileDescriptionRestaurantLocation = ({ map }) => {
         </div>
         <aside className="text-white bg-fire-red flex flex-col items-center py-4">
           <div className="flex flex-col gap-4">
-            <h1 className="font-ifc-insane-rodeo-bold text-7xl  text-light-ivory">PALATINO</h1>
-            <h3 className="leading-[25px] text-[23px]  text-light-ivory">
-              Carrera 7 No. 139 07 <br /> Local 305
+            <h1 className="font-ifc-insane-rodeo-bold text-7xl text-light-ivory">{valueLocation?.name}</h1>
+            <h3 className="leading-[25px] text-[23px] w-60 text-light-ivory">
+              {valueLocation?.direction}
             </h3>
-            <div className="leading-[25px] ">
+            <div className="leading-[25px]">
               <span className="block pt-2  text-light-ivory">De domingo a domingo</span>
               <span className="text-[23px] text-light-ivory">11.30 am - 8:30 pm</span>
             </div>
