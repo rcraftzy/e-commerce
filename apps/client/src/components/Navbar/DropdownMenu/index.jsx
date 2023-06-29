@@ -20,11 +20,11 @@ export const DropdownMenu = () => {
       <div className="items-center">
         <button onClick={toggleMenu}>Menu</button>
         <div
-          className={`origin-top-right absolute min-h-screen z-20 inset-x-0 top-24 sm:top-28 bottom-0 bg-[#44000099] ${
-            isOpen ? "block" : "hidden"
+          className={`origin-top-right absolute pt-10  min-h-screen z-20 inset-x-0 top-24 sm:top-28 bottom-0 bg-[#44000099] ${
+            isOpen ? "block " : "hidden"
           }`}
         >
-          <span className="absolute h-full inset-x-0 bg-[#00000080] inset-y-0" />
+          <span className="absolute h-full inset-x-0 bg-[#00000080] inset-y-0 " />
           <div
             className="py-16 absolute inset-x-0"
             role="menu"
@@ -36,6 +36,9 @@ export const DropdownMenu = () => {
                 <li key={label} className="">
                   <NavLink
                     to={to}
+                    onClick={() => {
+                      setIsOpen(!isOpen);
+                    }}
                     className={({ isActive }) =>
                       isActive
                         ? linkClass
@@ -50,21 +53,12 @@ export const DropdownMenu = () => {
             <ul className="flex flex-col justify-center mt-7 gap-7">
               <li className="w-full bg-fire-red py-3">
                 <NavLink
+                  onClick={() => {
+                    setIsOpen(!isOpen);
+                  }}
                   className={`text-3xl hover:text-intense-orange font-bold transition ease flex max-w-xs mx-auto w-full text-white`}
                 >
                   Pide aquí
-                </NavLink>
-              </li>
-              <li className="flex max-w-xs mx-auto w-full">
-                <NavLink
-                  to="/blog"
-                  className={({ isActive }) =>
-                    isActive
-                      ? linkClass
-                      : `${baseLinkClass} text-white border-transparent`
-                  }
-                >
-                  Blog
                 </NavLink>
               </li>
             </ul>
