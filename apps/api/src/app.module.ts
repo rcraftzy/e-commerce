@@ -18,16 +18,18 @@ import { EcommerceModule } from './ecommerce/ecommerce.module';
 import { TcpcItemsCategories } from './feature/tcpc-items-categories';
 import { TcprPointSale } from './feature/tcpr-point-sale.entity';
 import { TcpcBrand } from './feature/tcpc-brand.entity';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'db4free.net',
+      host: process.env.DB_HOST,
       port: parseInt(process.env.DB_PORT),
-      username: 'integration',
-      password: 'integration',
-      database: 'integration',
+      username: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
       entities: [
         TcpcItems,
         TcpcLoginUsers,

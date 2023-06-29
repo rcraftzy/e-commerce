@@ -4,15 +4,20 @@ import { TcpcLoginUsersController } from './tcpc-login-users.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TcpcLoginUsers } from 'src/feature/tcpc-login-users.entity';
 import { JwtModule } from '@nestjs/jwt';
-import { JWT_SECRET } from 'src/common/constants';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([TcpcLoginUsers]),
-    JwtModule.register({
-      global: true,
-      secret: JWT_SECRET,
-      signOptions: { expiresIn: '60m' },
+    JwtModule.registerAsync({
+      useFactory() {
+        return {
+          global: true,
+          secret: process.env.JWT_SECRET,
+          signOptions: {
+            expiresIn: process.env.JWT_TIME,
+          },
+        };
+      },
     }),
   ],
   controllers: [TcpcLoginUsersController],
